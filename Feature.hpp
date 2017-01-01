@@ -6,6 +6,7 @@
 
 #include "./tensor/common.hpp"
 #include "Parameters.hpp"
+#include "tensor.h"
 #include <iostream>
 
 
@@ -33,12 +34,21 @@ namespace kurff{
 
             virtual bool run() = 0;
 
+            void set_input(Tensor<Context>* input){
+                input_ = input;
+            }
+
+            Tensor<Context*> get_output(){
+                return output_;
+            }
             //virtual bool destroy() = 0;
 
             
             
 
         private:
+            Tensor<Context>* input_;
+            Tensor<Context>* output_;
 
 
 
@@ -65,6 +75,9 @@ namespace kurff{
             bool run(){
                 float uu[9] = {1.0000,0.9397,0.7660,0.500,0.1736,-0.1736,-0.5000,-0.7660,-0.9397};
                 float vv[9] = {0.0000,0.3420,0.6428, 0.8660, 0.9848, 0.9848, 0.8660, 0.6428, 0.3420};
+                
+
+
                 
                 
 
