@@ -40,7 +40,7 @@ namespace kurff
     
 
     class Data{
-
+        
         
 
 

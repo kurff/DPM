@@ -7,7 +7,7 @@ using namespace std;
 namespace kurff {
 namespace db {
 
-DEFINE_REGISTRY(Caffe2DBRegistry, DB, const string&, Mode);
+
 
 // Below, we provide a bare minimum database "minidb" as a reference
 // implementation as well as a portable choice to store data.
