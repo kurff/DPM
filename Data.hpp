@@ -19,6 +19,7 @@ namespace kurff
 
 
             }
+        
 
         public:
             int x0_;
@@ -36,7 +37,10 @@ namespace kurff
 
     };
 
+    
+
     class Data{
+
         
 
 
