@@ -28,6 +28,11 @@ class Operator{
 
         }
 
+        virtual bool setup() = 0;
+        virtual bool run() = 0;
+
+        
+
         
 
     private:
@@ -46,6 +51,15 @@ class HOGOps: public Operator{
         ~HOGOps(){
 
             
+        }
+
+        bool setup(){
+            
+            return true;
+        }
+        bool run(){
+
+
         }
 
     private:
