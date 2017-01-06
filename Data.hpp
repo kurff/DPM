@@ -14,7 +14,8 @@ namespace kurff
     class Box{
         public:
 
-            Box():x0_(0),y0_(0),x1_(0),y1_(0),h_(0),w_(0),confidence_(0),obj_name_(""),file_(""),type_(0),cls_(0),key_(0){
+            Box():x0_(0),y0_(0),x1_(0),y1_(0),h_(0),w_(0),confidence_(0),
+            obj_name_(""),file_(""),type_(0),cls_(0),key_(0){
 
             }
             ~Box(){

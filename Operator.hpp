@@ -59,7 +59,7 @@ class HOGOps: public Operator{
         }
         bool run(){
 
-
+            return true;
         }
 
     private:

@@ -3,12 +3,13 @@
 #include <iostream>
 
 #include "./tensor/common.hpp"
+#include "Operator.hpp"
 
 using namespace std;
 
 
 
-
+template <typename Context>
 class Model{
     public:
         Model(){
@@ -31,8 +32,8 @@ class Model{
 
 
 
-
-class HOGModel:public Model{
+template <typename Context>
+class HOGModel:public Model<Context>{
     public:
         HOGModel(){
             
