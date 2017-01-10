@@ -43,30 +43,7 @@ class Operator{
 
 
 
-class HOGOps: public Operator{
-    public:
-        HOGOps(){
 
-        }
-        ~HOGOps(){
-
-            
-        }
-
-        bool setup(){
-            
-            return true;
-        }
-        bool run(){
-
-            return true;
-        }
-
-    private:
-
-
-
-};
 
 
 #endif
