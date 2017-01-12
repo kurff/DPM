@@ -2,7 +2,7 @@
 #include <random>
 
 #include "math.h"
-
+#include "types.h"
 #include "./tensor/context.h"
 #include "eigen3/Eigen/Core"
 #include "eigen3/Eigen/Dense"

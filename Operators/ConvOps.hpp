@@ -4,6 +4,8 @@
 #define _KURFF_CONVOPS_HPP_
 
 #include "../Operator.hpp"
+#include "../Parameters.hpp"
+#include "../utils/"
 #include "tensor.h"
 
 
@@ -18,11 +20,24 @@ class ConvOps: public Operator<Context>{
             
         }
 
-        bool setup(){
+        bool setup(Tensor<Context>* input, const Parameters& para, string name){
+            input_ = input;
+            conv_para_ = para.conv_params_[name];
+
+            // create output 
+
+            // create input_col 
+
+            
+
+
+
+
             
             return true;
         }
         bool run(){
+
 
             return true;
         }
@@ -30,6 +45,10 @@ class ConvOps: public Operator<Context>{
     private:
         Tensor<Context>* input_;
         Tensor<Context>* output_;
+        Tensor<Context>* input_col_;
+
+        ConvParameters conv_para_;
+
 
         
 

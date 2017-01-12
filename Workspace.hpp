@@ -58,7 +58,15 @@ class Workspace{
                 LOG(INFO)  << "Model " << name << " already exists. Skipping.";
             } else {
                 LOG(INFO) << "Creating Model " << name;
-                (*model_map_)[name] = unique_ptr<Model<Context> >(new Model<Context> ());
+
+
+                if(strcmp(name,"HOG")){
+                    (*model_map_)[name] = unique_ptr<Model<Context> >(new HOGModel<Context> ());
+                }else if(strcmp(name,"DPM")){
+                    
+                }else{
+
+                }
             }
             return (*model_map_)[name].get();
 

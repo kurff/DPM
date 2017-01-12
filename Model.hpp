@@ -5,6 +5,8 @@
 #include "./tensor/common.hpp"
 #include "Operator.hpp"
 
+
+#include <vector>
 using namespace std;
 
 
@@ -22,11 +24,12 @@ class Model{
 
         }
 
-        virtual bool read() = 0;
+        virtual bool deserialize() = 0;
         virtual bool run() = 0;
         
 
     private:
+        vector<shared_ptr< Operator >  >  ops_;
 
 };
 
@@ -44,6 +47,7 @@ class HOGModel:public Model<Context>{
         }
 
     private:
+        
 
 
 

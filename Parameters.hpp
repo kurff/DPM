@@ -4,10 +4,31 @@
 #ifndef _KURFF_PARAMETERS_HPP_
 #define _KURFF_PARAMETERS_HPP_
 #include <iostream>
-
+#include <string>
+#include <vector>
+#include <map>
 #include "./tensor/common.hpp"
 
 using namespace std;
+
+
+
+
+namespace kurff{
+
+class ConvParameters{
+    public:
+        int kernel_h_;
+        int kernel_w_;
+
+        int pad_t_;
+        int pad_l_;
+        int pad_b_;
+        int pad_r_;
+        int stride_h_;
+        int stride_w_;
+
+};
 
 
 
@@ -37,15 +58,9 @@ class Parameters{
         int sbin_; //
 
         // Convolutional parameters;
-        int kernel_h_;
-        int kernel_w_;
+        map<string,ConvParameters> conv_params_;
 
-        int pad_t_;
-        int pad_l_;
-        int pad_b_;
-        int pad_r_;
-        int stride_h_;
-        int stride_w_;
+
 
 
 
@@ -55,6 +70,6 @@ class Parameters{
 
 
 
-
+} // end of namespace kurff
 
 #endif
