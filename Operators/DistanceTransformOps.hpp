@@ -1,7 +1,5 @@
-
-
-#ifndef _KURFF_CONVOPS_HPP_
-#define _KURFF_CONVOPS_HPP_
+#ifndef _KURFF_DISTANCE_TRANSFORM_OPS_HPP_
+#define _KURFF_DISTANCE_TRANSFORM_OPS_HPP_
 
 #include "../Operator.hpp"
 #include "../Parameters.hpp"
@@ -9,13 +7,14 @@
 #include "tensor.h"
 
 
+// Distance Transform
 template<typename Context>
-class ConvOps: public Operator<Context>{
+class DTOps: public Operator<Context>{
     public:
-        ConvOps(){
+        DTOps(){
 
         }
-        ~ConvOps(){
+        ~DTOps(){
 
             
         }
@@ -38,6 +37,8 @@ class ConvOps: public Operator<Context>{
             return true;
         }
         bool run(){
+
+
 
 
             return true;
