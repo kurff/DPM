@@ -21,7 +21,7 @@ class DTOps: public Operator<Context>{
 
         bool setup(Tensor<Context>* input, const Parameters& para, string name){
             input_ = input;
-            conv_para_ = para.conv_params_[name];
+            
 
             // create output 
             
@@ -47,9 +47,9 @@ class DTOps: public Operator<Context>{
     private:
         Tensor<Context>* input_;
         Tensor<Context>* output_;
-        Tensor<Context>* input_col_;
 
-        ConvParameters conv_para_;
+
+        
 
 
         
