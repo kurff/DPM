@@ -6,7 +6,10 @@
 #include <iostream>
 
 #include "./tensor/common.hpp"
-
+#include "Operator.hpp"
+#include "Parameters.hpp"
+#include "tensor.h"
+#include "Workspace.hpp"
 using namespace std;
 
 
@@ -28,7 +31,7 @@ class Operator{
 
         }
 
-        virtual bool setup() = 0;
+        virtual bool setup(Tensor<Context>* input, Workspace* ws, const Parameters& para, string name) = 0;
         virtual bool run() = 0;
 
         
