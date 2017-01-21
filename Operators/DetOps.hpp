@@ -24,6 +24,7 @@ class DetOps: public Operator<Context>{
         
         Tensor<Context>* input_;
         Tensor<Context>* output_;
+        Tensor<Context>* thresh_;
     
 
 }

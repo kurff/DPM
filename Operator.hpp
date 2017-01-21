@@ -33,6 +33,8 @@ class Operator{
 
         virtual bool setup(Tensor<Context>* input, Workspace* ws, const Parameters& para, string name) = 0;
         virtual bool run() = 0;
+        virtual bool seralize()  = 0;
+        virtual bool deseralize() = 0;
 
         
 

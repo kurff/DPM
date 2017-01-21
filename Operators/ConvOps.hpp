@@ -90,11 +90,21 @@ class ConvOps: public Operator<Context>{
             return true;
         }
 
+        bool seralize(){
+            
+
+            return true;
+        }
+        bool deseralize(){
+
+            return true;
+        }
+
     private:
         Tensor<Context>* input_;
         Tensor<Context>* output_;
         Tensor<Context>* input_col_;
-
+        Tensor<Context>* kernel_;
         ConvParameters conv_para_;
 
 

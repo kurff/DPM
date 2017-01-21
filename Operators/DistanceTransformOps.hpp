@@ -20,6 +20,7 @@ class DTOps: public Operator<Context>{
         }
 
         bool setup(Tensor<Context>* input, const Parameters& para, string name){
+            
             input_ = input;
             
 
@@ -47,7 +48,7 @@ class DTOps: public Operator<Context>{
     private:
         Tensor<Context>* input_;
         Tensor<Context>* output_;
-
+        Tensor<Context>* weight_;
 
         
 
