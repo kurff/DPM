@@ -44,7 +44,7 @@ class CPUContext {
   explicit CPUContext(const DeviceOption& option)
       : random_generator_(
             option.has_random_seed() ? option.random_seed() : time(NULL)) {
-    CAFFE_CHECK_EQ(option.device_type(), CPU);
+    KURFF_CHECK_EQ(option.device_type(), CPU);
   }
 
   virtual ~CPUContext() {}

@@ -3,7 +3,7 @@
 #define _KURFF_DATA_HPP_
 
 #include "tensor/common.hpp"
-
+#include "logging.h"
 #include <fstream>
 #include <string>
 #include <vector>
@@ -68,22 +68,44 @@ namespace kurff
 
             }
 
-            void deserialize(string file){
+            bool deserialize_objects(string file){
                 ifstream f(file, ios::in);
+                if(!f.is_open()){
+                    LOG(ERROR)<<"can not open "<< file;
+                    return false;
+                }
                 Box box;
                 f >> file_;
-                boxes_.clear();
+                whole_objects_.clear();
                 while(f >> box.x0_ >> box.y0_ >> box.x1_ >> box.y1_ >> box.obj_name_ >> box.cls_){
-                    boxes_.push_back(box);
+                    whole_objects_.push_back(box);
                 }
-
                 f.close();
+                return true;
+            }
+
+
+            bool serialize_objects(string file){
+                ofstream f(file, ios::out);
+                if(!f.is_open()){
+                    LOG(ERROR) << "can not open "<< file;
+                    return false;
+                }
+                f << file_;
+                for(size_t i = 0; i < whole_objects_.size(); ++ i){
+                    f << whole_objects_[i].x0_ <<" "<< whole_objects_[i].y0_
+                    <<" "<< whole_objects_[i].x1_ <<" "<< whole_objects_[i].y1_ <<" "<< whole_objects_[i].obj_name_
+                    <<" "<< whole_objects_[i].cls_<<endl; 
+                }
+                f.close();
+                return true;
             }
 
 
         private:
             string file_; // the full path of image
-            vector<Box> boxes_;
+            vector< Box > whole_objects_;
+            vector< vector<Box> > parts_; // the boxes of whole objects and parts
     };
 
 
@@ -91,11 +113,11 @@ namespace kurff
     // training data;
     // test data
     // validation data
-    
-    class Data{
 
+    class Data{
         public:
-            Data(){
+            Data(string file_dir, string ano_dir, string file):file_dir_(file_dir),
+            ano_dir_(ano_dir),file(file_){
 
             }
 
@@ -104,15 +126,31 @@ namespace kurff
 
             }
 
+            bool deserialize(){
+                ifstream f(file_,ios::in);
+                if(!f.is_open()){
+                    return false;
+                }
+                string name;
+                while(f >> name){
+                    
+                }
+
+
+
+                f.close();
+
+                return true;
+
+            }
+
+
 
         private:
+            string file_dir_;   // the path of input image
+            string ano_dir_;    // the path of anotations
+            string file_;
             vector<Anotation> anotations_;
-
-         
-        
-
-
-
     };
 
 
