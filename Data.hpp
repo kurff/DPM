@@ -91,6 +91,7 @@ namespace kurff
     // training data;
     // test data
     // validation data
+    
     class Data{
 
         public:
