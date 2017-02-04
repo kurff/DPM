@@ -29,6 +29,7 @@ class Model{
         
 
     private:
+
         vector<shared_ptr< Operator >  >  ops_;
 
 };
@@ -47,6 +48,7 @@ class HOGModel:public Model<Context>{
         }
 
     private:
+    
         
 
 

@@ -20,6 +20,14 @@ class DetOps: public Operator<Context>{
 
         }
 
+        bool run(){
+
+
+            
+
+
+        }
+
     private:
         
         Tensor<Context>* input_;
