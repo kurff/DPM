@@ -134,6 +134,7 @@ namespace kurff
                 string name;
                 while(f >> name){
                     
+                    
                 }
 
 

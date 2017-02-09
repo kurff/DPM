@@ -5,6 +5,11 @@
 #include <boost/archive/text_iarchive.hpp> 
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+
+// seralization with vector
+//#include <boost/archive/>
+#include <boost/serialization/vector.hpp>
+
 #include <math.h>
 #include <memory>
 #include <string>

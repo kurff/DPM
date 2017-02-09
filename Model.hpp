@@ -4,12 +4,12 @@
 
 #include "./tensor/common.hpp"
 #include "Operator.hpp"
-
+#include "tensor.h"
 
 #include <vector>
 using namespace std;
 
-
+namespace kurff{
 
 template <typename Context>
 class Model{
@@ -49,11 +49,30 @@ class HOGModel:public Model<Context>{
 
     private:
     
-        
+    
+};
 
+template <typename Context>
+class DPModel{
+    public:
+        DPModel(){
+
+        }
+
+        ~DPModel(){
+
+
+        }
+
+    private:
+        Tensor<Context>* filters_;
+        Tensor<Context>* defs_;
+        Tensor<Context>* anchors_;
+        
 
 
 };
 
 
+} // end of namespace kurff
 #endif

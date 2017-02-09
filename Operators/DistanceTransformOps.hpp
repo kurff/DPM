@@ -1,9 +1,9 @@
 #ifndef _KURFF_DISTANCE_TRANSFORM_OPS_HPP_
 #define _KURFF_DISTANCE_TRANSFORM_OPS_HPP_
 
-#include "../Operator.hpp"
-#include "../Parameters.hpp"
-#include "../utils/"
+#include "Operator.hpp"
+#include "Parameters.hpp"
+#include "utils/dt.hpp"
 #include "tensor.h"
 
 
@@ -39,7 +39,10 @@ class DTOps: public Operator<Context>{
         }
         bool run(){
             
-            
+
+            //for(int i = 0; i < input_->dim(0);++i){
+                //dt2d(input_->template);
+            //}
 
 
 

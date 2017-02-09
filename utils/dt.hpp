@@ -11,7 +11,7 @@
 
 // dt1d(source,destination_val,destination_ptr,source_step,source_length,
 //      a,b,dest_shift,dest_length,dest_step)
-void dt1d(double *src, double *dst, int *ptr, int step, int len, double a, double b, int dshift, int dlen, double dstep) {
+void dt1d(float *src, float *dst, int *ptr, int step, int len, float a, float b, int dshift, int dlen, float dstep) {
   int   *v = new int[len];
   float *z = new float[len+1];
   int k = 0;
@@ -49,7 +49,10 @@ void dt1d(double *src, double *dst, int *ptr, int step, int len, double a, doubl
 
 // dt2d 
 // input:
-void dt2d(){
+
+void dt2d(float* src, float* dst, float ax, float bx, float ay, float by, int shiftx, int shifty){
+    
+
 
 
 }
