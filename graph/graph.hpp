@@ -53,8 +53,15 @@ namespace kurff{
 
             size_t get_number_vertices(){return graph_.size();}
             Node get_node(size_t idx){return graph_[idx];}
+            
+            
+            // partion operation of graph into several group
+            // 
 
-                        
+            void partition(){
+
+
+            }            
 
 
 
