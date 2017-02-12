@@ -17,9 +17,24 @@ using namespace std;
 // Operator of model 
 // 
 
+class OperatorBase{
+    public:
+        OperatorBase(){
+
+        }
+        ~OperatorBase(){
+
+        }
+
+
+
+
+
+};
+
 template<typename Context>
 
-class Operator{
+class Operator: public OperatorBase{
     public:
         Operator(){
 
@@ -41,7 +56,7 @@ class Operator{
         
 
     private:
-
+        Context context_;
 };
 
 

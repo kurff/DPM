@@ -1,6 +1,7 @@
 #ifndef _KURFF_GRAPH_HPP_
 #define _KURFF_GRAPH_HPP_
 #include "tensor/common.hpp"
+#include "Operator.hpp"
 #include  <vector>
 using namespace std;
 namespace kurff{
@@ -26,6 +27,7 @@ namespace kurff{
             vector<size_t> parents_;
             vector<size_t> children_;
             size_t index_;
+            OperatorBase* ops_;
     };
 
 
@@ -54,6 +56,11 @@ namespace kurff{
             size_t get_number_vertices(){return graph_.size();}
             Node get_node(size_t idx){return graph_[idx];}
             
+            // setup a graph
+            bool setup(){
+
+                return true;
+            }
             
             // partion operation of graph into several group
             // 
@@ -61,13 +68,15 @@ namespace kurff{
             void partition(){
 
 
-            }            
+            }
+
+            
 
 
 
         private:
             vector<Node> graph_;
-
+            
 
 
 
