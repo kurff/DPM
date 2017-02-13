@@ -8,6 +8,8 @@
 #include <vector>
 #include <map>
 #include "./tensor/common.hpp"
+#include "tensor/common.hpp"
+
 
 using namespace std;
 
@@ -16,7 +18,19 @@ using namespace std;
 
 namespace kurff{
 
-class ConvParameters{
+
+class ParametersBase{
+    public:
+        ParametersBase(){
+
+        }
+        ~ParametersBase(){
+
+        }
+
+};
+
+class ConvParameters:public ParametersBase{
     public:
         int kernel_h_;
         int kernel_w_;
@@ -27,6 +41,15 @@ class ConvParameters{
         int pad_r_;
         int stride_h_;
         int stride_w_;
+
+
+
+};
+
+class HOGParameters: public ParametersBase{
+    public:
+
+    int sbin_; // HOG parameters
 
 };
 
@@ -50,16 +73,9 @@ class Parameters{
         
 
     public:
-
-
-
-
-        // HOG parameters
-        int sbin_; //
-
         // Convolutional parameters;
-        map<string,ConvParameters> conv_params_;
-
+        map<string,ParametersBase*> conv_params_;
+        
 
 
 

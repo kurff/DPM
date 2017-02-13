@@ -5,6 +5,9 @@
 #include "./tensor/common.hpp"
 #include "Operator.hpp"
 #include "tensor.h"
+#include "graph/graph.hpp"
+#include "Workspace.hpp"
+#include "Parameters.hpp"
 
 #include <vector>
 using namespace std;
@@ -25,12 +28,15 @@ class Model{
         }
 
         virtual bool deserialize() = 0;
-        virtual bool run() = 0;
+        virtual bool setup(Workspace* ws, const Parameters& para) = 0;
+        //virtual bool run() = 0;
+
         
 
     private:
 
-        vector<shared_ptr< Operator >  >  ops_;
+        vector<shared_ptr< OperatorBase >  >  ops_;
+        vector<int> devices_;
 
 };
 
@@ -47,7 +53,20 @@ class HOGModel:public Model<Context>{
 
         }
 
+        bool deserialize(){
+
+            return true;
+        }
+        bool setup(Workspace* ws, const Parameters& para){
+
+            
+            return true;
+        }
+        //bool run(){}
+
     private:
+        Tensor<Context>* filters_;
+        Tensor<Context>* bias_;
     
     
 };
@@ -64,14 +83,20 @@ class DPModel{
 
         }
 
+        bool setup(Workspace* ws, const Parameters& para){
+
+            return true;
+        }
+
+
     private:
         Tensor<Context>* filters_;
         Tensor<Context>* defs_;
         Tensor<Context>* anchors_;
-        
-
-
+        Tensor<Context>* bias_;
 };
+
+
 
 
 } // end of namespace kurff

@@ -21,13 +21,16 @@ namespace kurff{
                 ar & parents_;
                 ar & children_;
                 ar & index_;
+                ar & device_;
             }
 
         private:
             vector<size_t> parents_;
             vector<size_t> children_;
             size_t index_;
-            OperatorBase* ops_;
+            shared_ptr<OperatorBase> ops_;
+            int flag_; // indicate the state of computations
+            int device_;
     };
 
 
