@@ -84,7 +84,8 @@ class DPModel{
         }
 
         bool setup(Workspace* ws, const Parameters& para){
-
+            ParametersBase* ptr = para["Conv"];
+            
             return true;
         }
 

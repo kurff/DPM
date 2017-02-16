@@ -3,6 +3,8 @@
 #include "tensor/common.hpp"
 #include "Operator.hpp"
 #include  <vector>
+#include <string>
+#include <fstream>
 using namespace std;
 namespace kurff{
     class Node{
@@ -29,7 +31,7 @@ namespace kurff{
             vector<size_t> children_;
             size_t index_;
             shared_ptr<OperatorBase> ops_;
-            int flag_; // indicate the state of computations
+            int state_; // indicate the state of computations
             int device_;
     };
 
@@ -60,8 +62,10 @@ namespace kurff{
             Node get_node(size_t idx){return graph_[idx];}
             
             // setup a graph
+            // load graph configuration and setup the graph
             bool setup(){
 
+                
                 return true;
             }
             
