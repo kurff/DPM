@@ -18,6 +18,12 @@ using namespace std;
 
 namespace kurff{
 
+enum TypeParam{
+    CONV =1,
+    HOG=2,
+
+};
+
 
 
 class ParametersBase{
@@ -43,12 +49,12 @@ class ConvParameters:public ParametersBase{
         int pad_r_;
         int stride_h_;
         int stride_w_;
-        size_t type_;
+        TypeParam type_;
         string name_;
         
 
     public:
-        ConvParameters():(){
+        ConvParameters(string name):name_(name),type_(CONV){
 
         }
 
@@ -58,10 +64,15 @@ class ConvParameters:public ParametersBase{
 
 class HOGParameters: public ParametersBase{
     public:
+        int sbin_; // HOG parameters
+        string name_;
+        TypeParam type_;
 
-    int sbin_; // HOG parameters
-    string name_;
-    size_t type_;
+    public:
+        HOGParameters(string name):name_(name),type_(HOG){
+
+        }
+
 };
 
 
@@ -79,6 +90,8 @@ class Parameters{
 
         }
 
+
+        
 
         
         
