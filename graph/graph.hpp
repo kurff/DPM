@@ -7,6 +7,7 @@
 #include <fstream>
 using namespace std;
 namespace kurff{
+    //template<typename VerticeD>
     class Node{
         public:
             Node(){
@@ -30,15 +31,21 @@ namespace kurff{
             vector<size_t> parents_;
             vector<size_t> children_;
             size_t index_;
-            shared_ptr<OperatorBase> ops_;
+            shared_ptr<OperatorBase> op_;
             int state_; // indicate the state of computations
             int device_;
     };
 
 
+    // graph is an instanization of model
+    template<typename Model>
     class Graph{
         public:
-            Graph(){
+
+
+
+
+            Graph(string config, Model model):config_(config),model_(model){
 
 
             }
@@ -64,8 +71,11 @@ namespace kurff{
             // setup a graph
             // load graph configuration and setup the graph
             bool setup(){
-
+                ifstream fin(config_,ios::in);
                 
+
+
+                fin.close();
                 return true;
             }
             
@@ -83,7 +93,11 @@ namespace kurff{
 
         private:
             vector<Node> graph_;
+            string config_;
+
+            const Model& model_;
             
+                  
 
 
 

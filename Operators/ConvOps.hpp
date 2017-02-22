@@ -26,6 +26,8 @@ class ConvOps: public Operator<Context>{
             conv_para_ = para.conv_params_[name];
 
             // calculate the shape of input_col
+            
+
 
             // calculate the shape of output
 
