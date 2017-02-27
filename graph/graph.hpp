@@ -5,6 +5,7 @@
 #include  <vector>
 #include <string>
 #include <fstream>
+#include "glog/logging.h"
 using namespace std;
 namespace kurff{
     //template<typename VerticeD>
@@ -42,7 +43,7 @@ namespace kurff{
     class Graph{
         public:
 
-
+            const Model& model_;
 
 
             Graph(string config, Model model):config_(config),model_(model){
@@ -72,10 +73,18 @@ namespace kurff{
             // load graph configuration and setup the graph
             bool setup(){
                 ifstream fin(config_,ios::in);
+                if(!fin.is_open()){
+                    LOG(INFO)<<"can not open config "<<config_;
+                    return false;
+                }
+
                 
 
 
                 fin.close();
+
+
+
                 return true;
             }
             
@@ -94,8 +103,6 @@ namespace kurff{
         private:
             vector<Node> graph_;
             string config_;
-
-            const Model& model_;
             
                   
 

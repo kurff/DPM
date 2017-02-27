@@ -25,7 +25,23 @@ class ConvOps: public Operator<Context>{
             input_ = input;
             conv_para_ = para.conv_params_[name];
 
+            int channels = input_->dims()[3];
+            int height = input_->dims()[1];
+            int width = input_->dims()[2];
             // calculate the shape of input_col
+            
+            int h = (height + conv_para_.pad_b_ 
+            + conv_para_.pad_b_ - conv_para_.kernel_h_) / conv_para_.stride_h_;
+            
+            int w = (width + conv_para_.pad_l_ + conv_para_.pad_r_
+            -conv_para_.kernel_w_)/conv_para_.stride_w_;
+
+            int height_col = h*w;
+            int width_col = conv_para_.kernel_h_*conv_param_.kernel_w_*
+            conv_para_.kernel_d_;
+
+            input_col_ = ws->create(string("input_col_")+name);
+
             
 
 
@@ -52,8 +68,6 @@ class ConvOps: public Operator<Context>{
             int height = input_->dims()[1];
             int width = input_->dims()[2];
 
-
-            Context context;
             math::Im2col<float, Context, StorageOrder::NHWC>(input_->template data<float>(), 
             channels, 
             height,
@@ -67,7 +81,7 @@ class ConvOps: public Operator<Context>{
             conv_para_.stride_h_, 
             conv_para_.stride_w_, 
             input_col_->template mutable_data<float>(),
-            &context);
+            &context_);
 
             math::Gemm<float, Context>(CBLAS_TRANSPOSE TransA,
             CBLAS_TRANSPOSE TransB,
@@ -86,7 +100,7 @@ class ConvOps: public Operator<Context>{
             pad_r,
             stride_h, 
             stride_w, output_->template mutable_data<float>(),
-            &context);
+            &context_);
 
 
             return true;
@@ -108,7 +122,7 @@ class ConvOps: public Operator<Context>{
         Tensor<Context>* input_col_;
         Tensor<Context>* kernel_;
         ConvParameters conv_para_;
-
+        
 
         
 

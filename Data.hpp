@@ -3,7 +3,7 @@
 #define _KURFF_DATA_HPP_
 
 #include "tensor/common.hpp"
-#include "logging.h"
+#include "glog/logging.h"
 #include <fstream>
 #include <string>
 #include <vector>
