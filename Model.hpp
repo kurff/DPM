@@ -67,6 +67,8 @@ class HOGModel:public Model<Context>{
     private:
         Tensor<Context>* filters_;
         Tensor<Context>* bias_;
+
+
     
     
 };
@@ -89,12 +91,30 @@ class DPModel{
             return true;
         }
 
+        int get_parent(int idx){
+            return parents_[idx];
+        }
+        shared_ptr<Tensor<Context> > get_node(int idx){
+
+        }
+        shared_ptr<Tensor<Context> > get_deps(int idx){
+
+        }
+        
 
     private:
-        Tensor<Context>* filters_;
-        Tensor<Context>* defs_;
-        Tensor<Context>* anchors_;
-        Tensor<Context>* bias_;
+        vector< shared_ptr< Tensor<Context> > > filters_;
+        vector< shared_ptr< Tensor<Context> > > defs_;
+        vector< shared_ptr< Tensor<Context> > > anchors_;
+        vector< shared_ptr< Tensor<Context> > > bias_;
+        vector< int> parents_;
+        vector< string > ops_name_;
+        
+        //Tensor<Context>* filters_;
+        //Tensor<Context>* defs_;
+        //Tensor<Context>* anchors_;
+        //Tensor<Context>* bias_;
+        //KurffMap<string,  OperatorBase> ops_;
 };
 
 
