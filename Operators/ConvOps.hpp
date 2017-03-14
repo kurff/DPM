@@ -106,21 +106,27 @@ class ConvOps: public Operator<Context>{
             return true;
         }
 
-        bool seralize(){
-            
 
-            return true;
-        }
         bool deseralize(){
 
             return true;
+        }
+
+        friend class boost::serialization::access;
+
+        template<class Archive>
+        void serialize(Archive& ar, const unsigned int version){
+            ar & kernel_;
+            ar & bias_;
         }
 
     private:
         Tensor<Context>* input_;
         Tensor<Context>* output_;
         Tensor<Context>* input_col_;
-        Tensor<Context>* kernel_;
+        Tensor<Context>* kernel_; //w
+        Tensor<Context>* bias_; //b
+
         ConvParameters conv_para_;
         
 

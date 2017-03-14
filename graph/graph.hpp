@@ -9,33 +9,8 @@
 using namespace std;
 namespace kurff{
     //template<typename VerticeD>
-    class Node{
-        public:
-            Node(){
 
-            }
-            ~Node(){
-
-            }
-
-            friend class boost::serialization::access;
-
-            template<class Archive>
-            void serialize(Archive& ar, const unsigned int version){
-                ar & parents_;
-                ar & children_;
-                ar & index_;
-                ar & device_;
-            }
-
-        private:
-            vector<size_t> parents_;
-            vector<size_t> children_;
-            size_t index_;
-            shared_ptr<OperatorBase> op_;
-            int state_; // indicate the state of computations
-            int device_;
-    };
+    class Node;
 
 
     // graph is an instanization of model
@@ -60,7 +35,7 @@ namespace kurff{
 
             template<class Archive>
             void serialize(Archive& ar, const unsigned int version){
-                ar & graph_;
+                //ar & graph_;
                 //ar & children_;
                 //ar & index_;
             }
@@ -72,20 +47,7 @@ namespace kurff{
             // setup a graph
             // load graph configuration and setup the graph
             bool setup(){
-                ifstream fin(config_,ios::in);
-                if(!fin.is_open()){
-                    LOG(INFO)<<"can not open config "<<config_;
-                    return false;
-                }
 
-                
-
-
-                fin.close();
-
-
-
-                return true;
             }
             
             // partion operation of graph into several group
@@ -96,12 +58,15 @@ namespace kurff{
 
             }
 
-            
+            bool run(){
+
+                return true;
+            }
 
 
 
         private:
-            vector<Node> graph_;
+            //vector<Node> graph_;
             string config_;
             
                   

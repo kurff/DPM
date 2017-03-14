@@ -25,8 +25,13 @@ class OperatorBase{
         ~OperatorBase(){
 
         }
+        
 
+                //ar & graph_;
+                //ar & children_;
+                //ar & index_;
 
+        
 
 
 
@@ -48,7 +53,10 @@ class Operator: public OperatorBase{
 
         virtual bool setup(Tensor<Context>* input, Workspace* ws, const Parameters& para, string name) = 0;
         virtual bool run() = 0;
-        virtual bool seralize()  = 0;
+        friend class boost::serialization::access;
+
+        template<class Archive>
+        void serialize(Archive& ar, const unsigned int version) = 0;
         virtual bool deseralize() = 0;
 
         

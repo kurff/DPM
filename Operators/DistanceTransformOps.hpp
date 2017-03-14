@@ -50,10 +50,23 @@ class DTOps: public Operator<Context>{
             return true;
         }
 
+        friend class boost::serialization::access;
+
+        template<class Archive>
+        void serialize(Archive& ar, const unsigned int version){
+
+            ar & weight_;
+            ar & anchor_;
+
+            
+        }
+
+
     private:
         Tensor<Context>* input_;
         Tensor<Context>* output_;
         Tensor<Context>* weight_;
+        Tensor<Context>* anchor_;
 
         
 

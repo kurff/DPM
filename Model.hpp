@@ -8,6 +8,7 @@
 #include "graph/graph.hpp"
 #include "Workspace.hpp"
 #include "Parameters.hpp"
+#include "graph/node.hpp"
 
 #include <vector>
 using namespace std;
@@ -27,7 +28,8 @@ class Model{
 
         }
 
-        virtual bool deserialize() = 0;
+        virtual bool deserialize(string file) = 0;
+
         virtual bool setup(Workspace* ws, const Parameters& para) = 0;
         //virtual bool run() = 0;
 
@@ -85,30 +87,39 @@ class DPModel{
 
         }
 
+        bool deserialize(string file){
+
+            ifstream f(file.c_str(),ios::in);
+            
+
+            f.close();
+
+            return true;
+        }
+
         bool setup(Workspace* ws, const Parameters& para){
             ParametersBase* ptr = para["Conv"];
             
             return true;
         }
 
-        int get_parent(int idx){
-            return parents_[idx];
-        }
-        shared_ptr<Tensor<Context> > get_node(int idx){
 
+        shared_ptr<OperatorBase > get_node(int idx){
+            return ops_[idx];
         }
-        shared_ptr<Tensor<Context> > get_deps(int idx){
 
-        }
         
 
     private:
-        vector< shared_ptr< Tensor<Context> > > filters_;
-        vector< shared_ptr< Tensor<Context> > > defs_;
-        vector< shared_ptr< Tensor<Context> > > anchors_;
-        vector< shared_ptr< Tensor<Context> > > bias_;
-        vector< int> parents_;
-        vector< string > ops_name_;
+
+        //vector< shared_ptr< Tensor<Context> > > filters_;
+        //vector< shared_ptr< Tensor<Context> > > defs_;
+        //vector< shared_ptr< Tensor<Context> > > anchors_;
+        //vector< shared_ptr< Tensor<Context> > > bias_;
+        //vector< int> parents_;
+        //map< string, int > ops_map_;
+        vector<Node> ops_;
+
         
         //Tensor<Context>* filters_;
         //Tensor<Context>* defs_;
