@@ -14,6 +14,8 @@ namespace kurff{
 
 
     // graph is an instanization of model
+    // graph is an session of model
+
     template<typename Model>
     class Graph{
         public:
@@ -59,6 +61,8 @@ namespace kurff{
             }
 
             bool run(){
+
+                
 
                 return true;
             }

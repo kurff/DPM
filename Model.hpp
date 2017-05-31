@@ -108,6 +108,18 @@ class DPModel{
             return ops_[idx];
         }
 
+        bool run(){
+
+            for(size_t i = 0; i < ops_.size(); ++ i){
+                if(!ops_[i]->run()){
+                    LOG(INFO)<<"error";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         
 
     private:
