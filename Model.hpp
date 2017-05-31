@@ -109,7 +109,7 @@ class DPModel{
         }
 
         bool run(){
-
+            LOG(INFO)<<"run DPM Model";
             for(size_t i = 0; i < ops_.size(); ++ i){
                 if(!ops_[i]->run()){
                     LOG(INFO)<<"error";

@@ -43,7 +43,7 @@ class DetOps: public Operator<Context>{
         Tensor<Context>* thresh_;
     
 
-}
+};
 
 
 
