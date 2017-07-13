@@ -41,11 +41,20 @@ class ConvOps: public Operator<Context>{
             conv_para_.kernel_d_;
 
             input_col_ = ws->create(string("input_col_")+name);
+            input_col_->Reshape(vector<int>{height_col, width_col});
+
 
             
 
 
             // calculate the shape of output
+
+            int oh = (height - kernel_h_) / stride_h_;
+            int ow = (width - kernel_w_ ) / stride_w_;
+            int on = kernel_->dims()[0];
+
+            output_ = ws->create(string("output_")+name);
+            output_ ->Reshape(vector<int>(on,oh,ow));
 
 
             // create output 

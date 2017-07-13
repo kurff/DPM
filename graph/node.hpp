@@ -21,18 +21,6 @@ namespace kurff{
 
             }
 
-            friend class boost::serialization::access;
-
-            template<class Archive>
-            void serialize(Archive& ar, const unsigned int version){
-                ar & parents_;
-                ar & children_;
-                ar & index_;
-                ar & device_;
-                ar & state_;
-                ar & op_;
-            }
-
         private:
             vector<size_t> parents_;
             vector<size_t> children_;

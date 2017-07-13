@@ -1,13 +1,13 @@
 #ifndef _KURFF_IO_HPP_
 #define _KURFF_IO_HPP_
 
-class DataIO{
+class DB{
     public:
-        DataIO(){
+        DB(){
 
         }
 
-        ~DataIO(){
+        ~DB(){
 
         }
 

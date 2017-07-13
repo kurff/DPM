@@ -33,14 +33,6 @@ namespace kurff{
 
             }
 
-            friend class boost::serialization::access;
-
-            template<class Archive>
-            void serialize(Archive& ar, const unsigned int version){
-                //ar & graph_;
-                //ar & children_;
-                //ar & index_;
-            }
 
 
             size_t get_number_vertices(){return graph_.size();}

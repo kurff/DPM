@@ -1,0 +1,59 @@
+
+syntax = "proto2";
+package kurff;
+message TensorProto{
+    repeated float data = 1;
+    repeated int32 dims = 2;
+}
+
+
+message NormalizedBBox {
+  optional float xmin = 1;
+  optional float ymin = 2;
+  optional float xmax = 3;
+  optional float ymax = 4;
+  optional int32 label = 5;
+  optional bool difficult = 6;
+  optional float score = 7;
+  optional float size = 8;
+}
+
+message Annotation {
+  optional int32 instance_id = 1 [default = 0];
+  optional NormalizedBBox bbox = 2;
+}
+
+message AnnotationGroup {
+  optional int32 group_label = 1;
+  repeated Annotation annotation = 2;
+}
+// image data
+message Datum {
+  optional int32 channels = 1;
+  optional int32 height = 2;
+  optional int32 width = 3;
+  // the actual image data, in bytes
+  optional bytes data = 4;
+  optional int32 label = 5;
+  // Optionally, the datum could also hold float data.
+  repeated float float_data = 6;
+  // If true data contains an encoded image that need to be decoded
+  optional bool encoded = 7 [default = false];
+}
+
+
+
+
+
+message HOGParameters{
+    required int32 sbin = 1 [default=4];
+    optional string name = 2;
+}
+
+
+message Parameters{
+    optional HOGParameters hog_parameters =1;
+    
+
+
+}
