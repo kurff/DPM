@@ -10,6 +10,7 @@
 #include "Parameters.hpp"
 #include "tensor.h"
 #include "Workspace.hpp"
+#include <string.h>
 using namespace std;
 
 
@@ -26,15 +27,6 @@ class OperatorBase{
 
         }
         
-
-                //ar & graph_;
-                //ar & children_;
-                //ar & index_;
-
-        
-
-
-
 };
 
 template<typename Context>
@@ -53,17 +45,13 @@ class Operator: public OperatorBase{
 
         virtual bool setup(Tensor<Context>* input, Workspace* ws, const Parameters& para, string name) = 0;
         virtual bool run() = 0;
-        friend class boost::serialization::access;
 
-        template<class Archive>
-        void serialize(Archive& ar, const unsigned int version) = 0;
-        virtual bool deseralize() = 0;
-
-        
-
-        
+    protected:
+        KurffMap<string, Tensor<Context> > extern_input_;
 
     private:
+
+
         Context context_;
 };
 
