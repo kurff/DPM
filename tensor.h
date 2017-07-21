@@ -10,7 +10,7 @@
 #include "./tensor/common.hpp"
 #include "./tensor/context.h"
 #include "./tensor/typeid.h"
-#include "logging.h"
+#include "glog/logging.h"
 
 namespace kurff {
 

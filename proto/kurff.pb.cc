@@ -30,15 +30,22 @@ class DatumDefaultTypeInternal : public ::google::protobuf::internal::Explicitly
 } _Datum_default_instance_;
 class HOGParametersDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<HOGParameters> {
 } _HOGParameters_default_instance_;
+class DeviceOptionDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<DeviceOption> {
+} _DeviceOption_default_instance_;
 class ParametersDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Parameters> {
 } _Parameters_default_instance_;
+class ModelDefDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<ModelDef> {
+} _ModelDef_default_instance_;
+class OperatorDefDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<OperatorDef> {
+} _OperatorDef_default_instance_;
 
 namespace protobuf_kurff_2eproto {
 
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[7];
+::google::protobuf::Metadata file_level_metadata[10];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[1];
 
 }  // namespace
 
@@ -53,6 +60,9 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::AuxillaryParseTableField
 };
 PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
     TableStruct::schema[] = {
+  { NULL, NULL, 0, -1, -1, false },
+  { NULL, NULL, 0, -1, -1, false },
+  { NULL, NULL, 0, -1, -1, false },
   { NULL, NULL, 0, -1, -1, false },
   { NULL, NULL, 0, -1, -1, false },
   { NULL, NULL, 0, -1, -1, false },
@@ -139,6 +149,17 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HOGParameters, name_),
   1,
   0,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeviceOption, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeviceOption, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeviceOption, device_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeviceOption, cuda_gpu_id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DeviceOption, random_seed_),
+  0,
+  1,
+  2,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Parameters, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Parameters, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -146,6 +167,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Parameters, hog_parameters_),
   0,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ModelDef, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ModelDef, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
@@ -155,7 +186,10 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 39, 46, sizeof(AnnotationGroup)},
   { 48, 60, sizeof(Datum)},
   { 67, 74, sizeof(HOGParameters)},
-  { 76, 82, sizeof(Parameters)},
+  { 76, 84, sizeof(DeviceOption)},
+  { 87, 93, sizeof(Parameters)},
+  { 94, 99, sizeof(ModelDef)},
+  { 99, 104, sizeof(OperatorDef)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -165,7 +199,10 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&_AnnotationGroup_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_Datum_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_HOGParameters_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_DeviceOption_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_Parameters_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_ModelDef_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&_OperatorDef_default_instance_),
 };
 
 namespace {
@@ -175,7 +212,7 @@ void protobuf_AssignDescriptors() {
   ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
       "kurff.proto", schemas, file_default_instances, TableStruct::offsets, factory,
-      file_level_metadata, NULL, NULL);
+      file_level_metadata, file_level_enum_descriptors, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
@@ -186,7 +223,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 7);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 10);
 }
 
 }  // namespace
@@ -204,8 +241,14 @@ void TableStruct::Shutdown() {
   delete file_level_metadata[4].reflection;
   _HOGParameters_default_instance_.Shutdown();
   delete file_level_metadata[5].reflection;
-  _Parameters_default_instance_.Shutdown();
+  _DeviceOption_default_instance_.Shutdown();
   delete file_level_metadata[6].reflection;
+  _Parameters_default_instance_.Shutdown();
+  delete file_level_metadata[7].reflection;
+  _ModelDef_default_instance_.Shutdown();
+  delete file_level_metadata[8].reflection;
+  _OperatorDef_default_instance_.Shutdown();
+  delete file_level_metadata[9].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
@@ -218,7 +261,10 @@ void TableStruct::InitDefaultsImpl() {
   _AnnotationGroup_default_instance_.DefaultConstruct();
   _Datum_default_instance_.DefaultConstruct();
   _HOGParameters_default_instance_.DefaultConstruct();
+  _DeviceOption_default_instance_.DefaultConstruct();
   _Parameters_default_instance_.DefaultConstruct();
+  _ModelDef_default_instance_.DefaultConstruct();
+  _OperatorDef_default_instance_.DefaultConstruct();
   _Annotation_default_instance_.get_mutable()->bbox_ = const_cast< ::kurff::NormalizedBBox*>(
       ::kurff::NormalizedBBox::internal_default_instance());
   _Parameters_default_instance_.get_mutable()->hog_parameters_ = const_cast< ::kurff::HOGParameters*>(
@@ -245,11 +291,16 @@ void AddDescriptorsImpl() {
       "\r\n\005width\030\003 \001(\005\022\014\n\004data\030\004 \001(\014\022\r\n\005label\030\005 "
       "\001(\005\022\022\n\nfloat_data\030\006 \003(\002\022\026\n\007encoded\030\007 \001(\010"
       ":\005false\".\n\rHOGParameters\022\017\n\004sbin\030\001 \002(\005:\001"
-      "4\022\014\n\004name\030\002 \001(\t\":\n\nParameters\022,\n\016hog_par"
-      "ameters\030\001 \001(\0132\024.kurff.HOGParameters"
+      "4\022\014\n\004name\030\002 \001(\t\"P\n\014DeviceOption\022\026\n\013devic"
+      "e_type\030\001 \001(\005:\0010\022\023\n\013cuda_gpu_id\030\002 \001(\005\022\023\n\013"
+      "random_seed\030\003 \001(\r\":\n\nParameters\022,\n\016hog_p"
+      "arameters\030\001 \001(\0132\024.kurff.HOGParameters\"\n\n"
+      "\010ModelDef\"\r\n\013OperatorDef*A\n\nDeviceType\022\007"
+      "\n\003CPU\020\000\022\010\n\004CUDA\020\001\022\n\n\006MKLDNN\020\002\022\024\n\rONLY_FO"
+      "R_TEST\020\305\336\373\t"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 595);
+      descriptor, 771);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "kurff.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -267,6 +318,22 @@ struct StaticDescriptorInitializer {
 } static_descriptor_initializer;
 
 }  // namespace protobuf_kurff_2eproto
+
+const ::google::protobuf::EnumDescriptor* DeviceType_descriptor() {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_enum_descriptors[0];
+}
+bool DeviceType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 20901701:
+      return true;
+    default:
+      return false;
+  }
+}
 
 
 // ===================================================================
@@ -3093,6 +3160,403 @@ void HOGParameters::set_allocated_name(::std::string* name) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int DeviceOption::kDeviceTypeFieldNumber;
+const int DeviceOption::kCudaGpuIdFieldNumber;
+const int DeviceOption::kRandomSeedFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+DeviceOption::DeviceOption()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_kurff_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kurff.DeviceOption)
+}
+DeviceOption::DeviceOption(const DeviceOption& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&device_type_, &from.device_type_,
+    reinterpret_cast<char*>(&random_seed_) -
+    reinterpret_cast<char*>(&device_type_) + sizeof(random_seed_));
+  // @@protoc_insertion_point(copy_constructor:kurff.DeviceOption)
+}
+
+void DeviceOption::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(&device_type_, 0, reinterpret_cast<char*>(&random_seed_) -
+    reinterpret_cast<char*>(&device_type_) + sizeof(random_seed_));
+}
+
+DeviceOption::~DeviceOption() {
+  // @@protoc_insertion_point(destructor:kurff.DeviceOption)
+  SharedDtor();
+}
+
+void DeviceOption::SharedDtor() {
+}
+
+void DeviceOption::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DeviceOption::descriptor() {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const DeviceOption& DeviceOption::default_instance() {
+  protobuf_kurff_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+DeviceOption* DeviceOption::New(::google::protobuf::Arena* arena) const {
+  DeviceOption* n = new DeviceOption;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void DeviceOption::Clear() {
+// @@protoc_insertion_point(message_clear_start:kurff.DeviceOption)
+  if (_has_bits_[0 / 32] & 7u) {
+    ::memset(&device_type_, 0, reinterpret_cast<char*>(&random_seed_) -
+      reinterpret_cast<char*>(&device_type_) + sizeof(random_seed_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool DeviceOption::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:kurff.DeviceOption)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 device_type = 1 [default = 0];
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(8u)) {
+          set_has_device_type();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &device_type_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional int32 cuda_gpu_id = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u)) {
+          set_has_cuda_gpu_id();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &cuda_gpu_id_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional uint32 random_seed = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u)) {
+          set_has_random_seed();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &random_seed_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:kurff.DeviceOption)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:kurff.DeviceOption)
+  return false;
+#undef DO_
+}
+
+void DeviceOption::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:kurff.DeviceOption)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional int32 device_type = 1 [default = 0];
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->device_type(), output);
+  }
+
+  // optional int32 cuda_gpu_id = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->cuda_gpu_id(), output);
+  }
+
+  // optional uint32 random_seed = 3;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->random_seed(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:kurff.DeviceOption)
+}
+
+::google::protobuf::uint8* DeviceOption::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kurff.DeviceOption)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional int32 device_type = 1 [default = 0];
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->device_type(), target);
+  }
+
+  // optional int32 cuda_gpu_id = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->cuda_gpu_id(), target);
+  }
+
+  // optional uint32 random_seed = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->random_seed(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kurff.DeviceOption)
+  return target;
+}
+
+size_t DeviceOption::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kurff.DeviceOption)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  if (_has_bits_[0 / 32] & 7u) {
+    // optional int32 device_type = 1 [default = 0];
+    if (has_device_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->device_type());
+    }
+
+    // optional int32 cuda_gpu_id = 2;
+    if (has_cuda_gpu_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->cuda_gpu_id());
+    }
+
+    // optional uint32 random_seed = 3;
+    if (has_random_seed()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->random_seed());
+    }
+
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DeviceOption::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kurff.DeviceOption)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DeviceOption* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const DeviceOption>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kurff.DeviceOption)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kurff.DeviceOption)
+    MergeFrom(*source);
+  }
+}
+
+void DeviceOption::MergeFrom(const DeviceOption& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kurff.DeviceOption)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 7u) {
+    if (cached_has_bits & 0x00000001u) {
+      device_type_ = from.device_type_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      cuda_gpu_id_ = from.cuda_gpu_id_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      random_seed_ = from.random_seed_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void DeviceOption::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kurff.DeviceOption)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DeviceOption::CopyFrom(const DeviceOption& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kurff.DeviceOption)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeviceOption::IsInitialized() const {
+  return true;
+}
+
+void DeviceOption::Swap(DeviceOption* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void DeviceOption::InternalSwap(DeviceOption* other) {
+  std::swap(device_type_, other->device_type_);
+  std::swap(cuda_gpu_id_, other->cuda_gpu_id_);
+  std::swap(random_seed_, other->random_seed_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata DeviceOption::GetMetadata() const {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// DeviceOption
+
+// optional int32 device_type = 1 [default = 0];
+bool DeviceOption::has_device_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void DeviceOption::set_has_device_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void DeviceOption::clear_has_device_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void DeviceOption::clear_device_type() {
+  device_type_ = 0;
+  clear_has_device_type();
+}
+::google::protobuf::int32 DeviceOption::device_type() const {
+  // @@protoc_insertion_point(field_get:kurff.DeviceOption.device_type)
+  return device_type_;
+}
+void DeviceOption::set_device_type(::google::protobuf::int32 value) {
+  set_has_device_type();
+  device_type_ = value;
+  // @@protoc_insertion_point(field_set:kurff.DeviceOption.device_type)
+}
+
+// optional int32 cuda_gpu_id = 2;
+bool DeviceOption::has_cuda_gpu_id() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void DeviceOption::set_has_cuda_gpu_id() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void DeviceOption::clear_has_cuda_gpu_id() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void DeviceOption::clear_cuda_gpu_id() {
+  cuda_gpu_id_ = 0;
+  clear_has_cuda_gpu_id();
+}
+::google::protobuf::int32 DeviceOption::cuda_gpu_id() const {
+  // @@protoc_insertion_point(field_get:kurff.DeviceOption.cuda_gpu_id)
+  return cuda_gpu_id_;
+}
+void DeviceOption::set_cuda_gpu_id(::google::protobuf::int32 value) {
+  set_has_cuda_gpu_id();
+  cuda_gpu_id_ = value;
+  // @@protoc_insertion_point(field_set:kurff.DeviceOption.cuda_gpu_id)
+}
+
+// optional uint32 random_seed = 3;
+bool DeviceOption::has_random_seed() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void DeviceOption::set_has_random_seed() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void DeviceOption::clear_has_random_seed() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void DeviceOption::clear_random_seed() {
+  random_seed_ = 0u;
+  clear_has_random_seed();
+}
+::google::protobuf::uint32 DeviceOption::random_seed() const {
+  // @@protoc_insertion_point(field_get:kurff.DeviceOption.random_seed)
+  return random_seed_;
+}
+void DeviceOption::set_random_seed(::google::protobuf::uint32 value) {
+  set_has_random_seed();
+  random_seed_ = value;
+  // @@protoc_insertion_point(field_set:kurff.DeviceOption.random_seed)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Parameters::kHogParametersFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -3387,6 +3851,396 @@ void Parameters::set_allocated_hog_parameters(::kurff::HOGParameters* hog_parame
   }
   // @@protoc_insertion_point(field_set_allocated:kurff.Parameters.hog_parameters)
 }
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ModelDef::ModelDef()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_kurff_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kurff.ModelDef)
+}
+ModelDef::ModelDef(const ModelDef& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kurff.ModelDef)
+}
+
+void ModelDef::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+ModelDef::~ModelDef() {
+  // @@protoc_insertion_point(destructor:kurff.ModelDef)
+  SharedDtor();
+}
+
+void ModelDef::SharedDtor() {
+}
+
+void ModelDef::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ModelDef::descriptor() {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const ModelDef& ModelDef::default_instance() {
+  protobuf_kurff_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+ModelDef* ModelDef::New(::google::protobuf::Arena* arena) const {
+  ModelDef* n = new ModelDef;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ModelDef::Clear() {
+// @@protoc_insertion_point(message_clear_start:kurff.ModelDef)
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool ModelDef::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:kurff.ModelDef)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:kurff.ModelDef)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:kurff.ModelDef)
+  return false;
+#undef DO_
+}
+
+void ModelDef::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:kurff.ModelDef)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:kurff.ModelDef)
+}
+
+::google::protobuf::uint8* ModelDef::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kurff.ModelDef)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kurff.ModelDef)
+  return target;
+}
+
+size_t ModelDef::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kurff.ModelDef)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ModelDef::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kurff.ModelDef)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ModelDef* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const ModelDef>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kurff.ModelDef)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kurff.ModelDef)
+    MergeFrom(*source);
+  }
+}
+
+void ModelDef::MergeFrom(const ModelDef& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kurff.ModelDef)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void ModelDef::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kurff.ModelDef)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ModelDef::CopyFrom(const ModelDef& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kurff.ModelDef)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ModelDef::IsInitialized() const {
+  return true;
+}
+
+void ModelDef::Swap(ModelDef* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ModelDef::InternalSwap(ModelDef* other) {
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata ModelDef::GetMetadata() const {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ModelDef
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+OperatorDef::OperatorDef()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_kurff_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:kurff.OperatorDef)
+}
+OperatorDef::OperatorDef(const OperatorDef& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:kurff.OperatorDef)
+}
+
+void OperatorDef::SharedCtor() {
+  _cached_size_ = 0;
+}
+
+OperatorDef::~OperatorDef() {
+  // @@protoc_insertion_point(destructor:kurff.OperatorDef)
+  SharedDtor();
+}
+
+void OperatorDef::SharedDtor() {
+}
+
+void OperatorDef::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* OperatorDef::descriptor() {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const OperatorDef& OperatorDef::default_instance() {
+  protobuf_kurff_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+OperatorDef* OperatorDef::New(::google::protobuf::Arena* arena) const {
+  OperatorDef* n = new OperatorDef;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void OperatorDef::Clear() {
+// @@protoc_insertion_point(message_clear_start:kurff.OperatorDef)
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+bool OperatorDef::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:kurff.OperatorDef)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:kurff.OperatorDef)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:kurff.OperatorDef)
+  return false;
+#undef DO_
+}
+
+void OperatorDef::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:kurff.OperatorDef)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:kurff.OperatorDef)
+}
+
+::google::protobuf::uint8* OperatorDef::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:kurff.OperatorDef)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:kurff.OperatorDef)
+  return target;
+}
+
+size_t OperatorDef::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:kurff.OperatorDef)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void OperatorDef::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:kurff.OperatorDef)
+  GOOGLE_DCHECK_NE(&from, this);
+  const OperatorDef* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const OperatorDef>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:kurff.OperatorDef)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:kurff.OperatorDef)
+    MergeFrom(*source);
+  }
+}
+
+void OperatorDef::MergeFrom(const OperatorDef& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:kurff.OperatorDef)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void OperatorDef::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:kurff.OperatorDef)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void OperatorDef::CopyFrom(const OperatorDef& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kurff.OperatorDef)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool OperatorDef::IsInitialized() const {
+  return true;
+}
+
+void OperatorDef::Swap(OperatorDef* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void OperatorDef::InternalSwap(OperatorDef* other) {
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata OperatorDef::GetMetadata() const {
+  protobuf_kurff_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_kurff_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// OperatorDef
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 

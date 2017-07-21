@@ -41,13 +41,26 @@ message Datum {
   optional bool encoded = 7 [default = false];
 }
 
-
-
-
-
 message HOGParameters{
     required int32 sbin = 1 [default=4];
     optional string name = 2;
+}
+
+enum DeviceType {
+  CPU = 0;                    // In default, we will use CPU.
+  CUDA = 1;                   // CUDA.
+  MKLDNN = 2;                 // Reserved for explicit MKLDNN
+  ONLY_FOR_TEST = 20901701;   // This device type is only for test.
+}
+
+message DeviceOption {
+  // [general] Options that need to be carried out before running the execution.
+  // optional DeviceType device_type = 1 [ default = CPU ];
+  optional int32 device_type = 1 [ default = 0 ]; // 0 is CPU.
+  // [CUDA specific] the cuda gpu id.
+  optional int32 cuda_gpu_id = 2;
+  // [general] The random seed to start the device random number generator with.
+  optional uint32 random_seed = 3;
 }
 
 
@@ -55,5 +68,15 @@ message Parameters{
     optional HOGParameters hog_parameters =1;
     
 
+
+}
+
+message ModelDef{
+  
+
+}
+
+message OperatorDef{
+  
 
 }

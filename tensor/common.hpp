@@ -1,14 +1,11 @@
 // common.hpp
 #ifndef _KURFF_COMMON_HPP_
 #define _KURFF_COMMON_HPP_
-#include <boost/archive/text_oarchive.hpp> 
-#include <boost/archive/text_iarchive.hpp> 
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/archive/binary_iarchive.hpp>
+
 
 // seralization with vector
 //#include <boost/archive/>
-#include <boost/serialization/vector.hpp>
+
 
 #include <math.h>
 #include <memory>
@@ -21,8 +18,13 @@
 
 
 namespace kurff{
-    #define	round(x)	((x-floor(x))>0.5 ? ceil(x) : floor(x))
-    #define float_eps 0.0001
+
+    template<typename T>
+    inline T round(T x){
+        return ((x-floor(x))>0.5 ? ceil(x) : floor(x));
+    }
+    
+    #define float_eps 0.000001
     template<typename T>
     static inline T min(T x, T y) { return (x <= y ? x : y); }
     template<typename T>

@@ -28,6 +28,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 namespace kurff {
@@ -40,12 +41,21 @@ extern AnnotationGroupDefaultTypeInternal _AnnotationGroup_default_instance_;
 class Datum;
 class DatumDefaultTypeInternal;
 extern DatumDefaultTypeInternal _Datum_default_instance_;
+class DeviceOption;
+class DeviceOptionDefaultTypeInternal;
+extern DeviceOptionDefaultTypeInternal _DeviceOption_default_instance_;
 class HOGParameters;
 class HOGParametersDefaultTypeInternal;
 extern HOGParametersDefaultTypeInternal _HOGParameters_default_instance_;
+class ModelDef;
+class ModelDefDefaultTypeInternal;
+extern ModelDefDefaultTypeInternal _ModelDef_default_instance_;
 class NormalizedBBox;
 class NormalizedBBoxDefaultTypeInternal;
 extern NormalizedBBoxDefaultTypeInternal _NormalizedBBox_default_instance_;
+class OperatorDef;
+class OperatorDefDefaultTypeInternal;
+extern OperatorDefDefaultTypeInternal _OperatorDef_default_instance_;
 class Parameters;
 class ParametersDefaultTypeInternal;
 extern ParametersDefaultTypeInternal _Parameters_default_instance_;
@@ -70,6 +80,27 @@ void AddDescriptors();
 void InitDefaults();
 }  // namespace protobuf_kurff_2eproto
 
+enum DeviceType {
+  CPU = 0,
+  CUDA = 1,
+  MKLDNN = 2,
+  ONLY_FOR_TEST = 20901701
+};
+bool DeviceType_IsValid(int value);
+const DeviceType DeviceType_MIN = CPU;
+const DeviceType DeviceType_MAX = ONLY_FOR_TEST;
+const int DeviceType_ARRAYSIZE = DeviceType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* DeviceType_descriptor();
+inline const ::std::string& DeviceType_Name(DeviceType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    DeviceType_descriptor(), value);
+}
+inline bool DeviceType_Parse(
+    const ::std::string& name, DeviceType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DeviceType>(
+    DeviceType_descriptor(), name, value);
+}
 // ===================================================================
 
 class TensorProto : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.TensorProto) */ {
@@ -824,6 +855,118 @@ class HOGParameters : public ::google::protobuf::Message /* @@protoc_insertion_p
 };
 // -------------------------------------------------------------------
 
+class DeviceOption : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.DeviceOption) */ {
+ public:
+  DeviceOption();
+  virtual ~DeviceOption();
+
+  DeviceOption(const DeviceOption& from);
+
+  inline DeviceOption& operator=(const DeviceOption& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DeviceOption& default_instance();
+
+  static inline const DeviceOption* internal_default_instance() {
+    return reinterpret_cast<const DeviceOption*>(
+               &_DeviceOption_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    6;
+
+  void Swap(DeviceOption* other);
+
+  // implements Message ----------------------------------------------
+
+  inline DeviceOption* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  DeviceOption* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const DeviceOption& from);
+  void MergeFrom(const DeviceOption& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(DeviceOption* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 device_type = 1 [default = 0];
+  bool has_device_type() const;
+  void clear_device_type();
+  static const int kDeviceTypeFieldNumber = 1;
+  ::google::protobuf::int32 device_type() const;
+  void set_device_type(::google::protobuf::int32 value);
+
+  // optional int32 cuda_gpu_id = 2;
+  bool has_cuda_gpu_id() const;
+  void clear_cuda_gpu_id();
+  static const int kCudaGpuIdFieldNumber = 2;
+  ::google::protobuf::int32 cuda_gpu_id() const;
+  void set_cuda_gpu_id(::google::protobuf::int32 value);
+
+  // optional uint32 random_seed = 3;
+  bool has_random_seed() const;
+  void clear_random_seed();
+  static const int kRandomSeedFieldNumber = 3;
+  ::google::protobuf::uint32 random_seed() const;
+  void set_random_seed(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:kurff.DeviceOption)
+ private:
+  void set_has_device_type();
+  void clear_has_device_type();
+  void set_has_cuda_gpu_id();
+  void clear_has_cuda_gpu_id();
+  void set_has_random_seed();
+  void clear_has_random_seed();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::int32 device_type_;
+  ::google::protobuf::int32 cuda_gpu_id_;
+  ::google::protobuf::uint32 random_seed_;
+  friend struct protobuf_kurff_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.Parameters) */ {
  public:
   Parameters();
@@ -852,7 +995,7 @@ class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_Parameters_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(Parameters* other);
 
@@ -914,6 +1057,170 @@ class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
   ::kurff::HOGParameters* hog_parameters_;
+  friend struct protobuf_kurff_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class ModelDef : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.ModelDef) */ {
+ public:
+  ModelDef();
+  virtual ~ModelDef();
+
+  ModelDef(const ModelDef& from);
+
+  inline ModelDef& operator=(const ModelDef& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ModelDef& default_instance();
+
+  static inline const ModelDef* internal_default_instance() {
+    return reinterpret_cast<const ModelDef*>(
+               &_ModelDef_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    8;
+
+  void Swap(ModelDef* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ModelDef* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ModelDef* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ModelDef& from);
+  void MergeFrom(const ModelDef& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ModelDef* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:kurff.ModelDef)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  friend struct protobuf_kurff_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class OperatorDef : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.OperatorDef) */ {
+ public:
+  OperatorDef();
+  virtual ~OperatorDef();
+
+  OperatorDef(const OperatorDef& from);
+
+  inline OperatorDef& operator=(const OperatorDef& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const OperatorDef& default_instance();
+
+  static inline const OperatorDef* internal_default_instance() {
+    return reinterpret_cast<const OperatorDef*>(
+               &_OperatorDef_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void Swap(OperatorDef* other);
+
+  // implements Message ----------------------------------------------
+
+  inline OperatorDef* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  OperatorDef* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const OperatorDef& from);
+  void MergeFrom(const OperatorDef& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(OperatorDef* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:kurff.OperatorDef)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
   friend struct protobuf_kurff_2eproto::TableStruct;
 };
 // ===================================================================
@@ -1621,6 +1928,82 @@ inline void HOGParameters::set_allocated_name(::std::string* name) {
 
 // -------------------------------------------------------------------
 
+// DeviceOption
+
+// optional int32 device_type = 1 [default = 0];
+inline bool DeviceOption::has_device_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DeviceOption::set_has_device_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DeviceOption::clear_has_device_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DeviceOption::clear_device_type() {
+  device_type_ = 0;
+  clear_has_device_type();
+}
+inline ::google::protobuf::int32 DeviceOption::device_type() const {
+  // @@protoc_insertion_point(field_get:kurff.DeviceOption.device_type)
+  return device_type_;
+}
+inline void DeviceOption::set_device_type(::google::protobuf::int32 value) {
+  set_has_device_type();
+  device_type_ = value;
+  // @@protoc_insertion_point(field_set:kurff.DeviceOption.device_type)
+}
+
+// optional int32 cuda_gpu_id = 2;
+inline bool DeviceOption::has_cuda_gpu_id() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DeviceOption::set_has_cuda_gpu_id() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DeviceOption::clear_has_cuda_gpu_id() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DeviceOption::clear_cuda_gpu_id() {
+  cuda_gpu_id_ = 0;
+  clear_has_cuda_gpu_id();
+}
+inline ::google::protobuf::int32 DeviceOption::cuda_gpu_id() const {
+  // @@protoc_insertion_point(field_get:kurff.DeviceOption.cuda_gpu_id)
+  return cuda_gpu_id_;
+}
+inline void DeviceOption::set_cuda_gpu_id(::google::protobuf::int32 value) {
+  set_has_cuda_gpu_id();
+  cuda_gpu_id_ = value;
+  // @@protoc_insertion_point(field_set:kurff.DeviceOption.cuda_gpu_id)
+}
+
+// optional uint32 random_seed = 3;
+inline bool DeviceOption::has_random_seed() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DeviceOption::set_has_random_seed() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DeviceOption::clear_has_random_seed() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DeviceOption::clear_random_seed() {
+  random_seed_ = 0u;
+  clear_has_random_seed();
+}
+inline ::google::protobuf::uint32 DeviceOption::random_seed() const {
+  // @@protoc_insertion_point(field_get:kurff.DeviceOption.random_seed)
+  return random_seed_;
+}
+inline void DeviceOption::set_random_seed(::google::protobuf::uint32 value) {
+  set_has_random_seed();
+  random_seed_ = value;
+  // @@protoc_insertion_point(field_set:kurff.DeviceOption.random_seed)
+}
+
+// -------------------------------------------------------------------
+
 // Parameters
 
 // optional .kurff.HOGParameters hog_parameters = 1;
@@ -1668,7 +2051,21 @@ inline void Parameters::set_allocated_hog_parameters(::kurff::HOGParameters* hog
   // @@protoc_insertion_point(field_set_allocated:kurff.Parameters.hog_parameters)
 }
 
+// -------------------------------------------------------------------
+
+// ModelDef
+
+// -------------------------------------------------------------------
+
+// OperatorDef
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1686,6 +2083,20 @@ inline void Parameters::set_allocated_hog_parameters(::kurff::HOGParameters* hog
 
 
 }  // namespace kurff
+
+#ifndef SWIG
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::kurff::DeviceType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::kurff::DeviceType>() {
+  return ::kurff::DeviceType_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
+#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

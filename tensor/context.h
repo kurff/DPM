@@ -3,6 +3,8 @@
 
 #include <ctime>
 #include <random>
+#include "../proto/kurff.pb.h"
+#include "common.hpp"
 
 namespace kurff {
 
@@ -80,6 +82,6 @@ inline void CPUContext::Memcpy<CPUContext, CPUContext>(
   memcpy(dst, src, nbytes);
 }
 
-}  // namespace caffe2
+}  // namespace 
 
-#endif  // CAFFE2_CORE_CONTEXT_H_
+#endif  // 

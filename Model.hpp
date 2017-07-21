@@ -7,7 +7,7 @@
 #include "tensor.h"
 #include "graph/graph.hpp"
 #include "Workspace.hpp"
-#include "Parameters.hpp"
+#include "proto/kurff.pb.h"
 #include "graph/node.hpp"
 
 #include <vector>
@@ -35,7 +35,7 @@ class Model{
 
         
 
-    private:
+    protected:
 
         vector<shared_ptr< OperatorBase >  >  ops_;
         vector<int> devices_;
@@ -66,7 +66,7 @@ class HOGModel:public Model<Context>{
         }
         //bool run(){}
 
-    private:
+    protected:
         Tensor<Context>* filters_;
         Tensor<Context>* bias_;
 
@@ -122,22 +122,9 @@ class DPModel{
 
         
 
-    private:
-
-        //vector< shared_ptr< Tensor<Context> > > filters_;
-        //vector< shared_ptr< Tensor<Context> > > defs_;
-        //vector< shared_ptr< Tensor<Context> > > anchors_;
-        //vector< shared_ptr< Tensor<Context> > > bias_;
-        //vector< int> parents_;
-        //map< string, int > ops_map_;
+    protected:
+        //  the DAG model
         vector<Node> ops_;
-
-        
-        //Tensor<Context>* filters_;
-        //Tensor<Context>* defs_;
-        //Tensor<Context>* anchors_;
-        //Tensor<Context>* bias_;
-        //KurffMap<string,  OperatorBase> ops_;
 };
 
 
