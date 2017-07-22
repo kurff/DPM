@@ -5,10 +5,11 @@
 #define _KURFF_FEATURE_HPP_
 
 #include "./tensor/common.hpp"
-#include "Parameters.hpp"
+#include "./proto/kurff.pb.h"
 #include "tensor.h"
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 
@@ -17,9 +18,8 @@ namespace kurff{
     template<typename Context>
     class Feature{
         public:
-
-            Feature(){
-
+            Feature():input_(nullptr),output_(new Tensor<Context>()){
+                
 
             }
             
@@ -48,7 +48,7 @@ namespace kurff{
             
             
 
-        private:
+        protected:
             Tensor<Context>* input_;
             Tensor<Context>* output_;
 
@@ -57,7 +57,7 @@ namespace kurff{
     };
 
     template<typename Context>
-    class HOGFeature: public Feature{
+    class HOGFeature: public Feature<Context>{
         public:
             HOGFeature(){
 
@@ -67,7 +67,8 @@ namespace kurff{
             }
 
             bool set(const Parameters& para){
-                sbin_ =  para.sbin_;     
+                sbin_ =  para.hog_parameters().sbin();
+                LOG(INFO)<<sbin_;
                 return true;
             }
             bool initial(){
@@ -79,24 +80,33 @@ namespace kurff{
                 float vv[9] = {0.0000, 0.3420, 0.6428, 0.8660, 0.9848, 0.9848, 0.8660, 0.6428, 0.3420};
                 int height = this->input_->dims()[2];
                 int width = this->input_->dims()[3];
-                float *im = this->input_->data<float>();
-
+                vector<int> dims = this->input_->dims();
+                float *im = this->input_->template mutable_data<float>();
                 int blocks[2];
+
+                
                 blocks[0] = (int)round((float)height / (float)sbin_);
                 blocks[1] = (int)round((float)width / (float)sbin_);
-                float *hist = new float[blocks[0] * blocks[1] * 18]();
+                float* hist = new float[blocks[0] * blocks[1] * 18]();
                 float *norm = new float[blocks[0] * blocks[1]]();
-
+                
                 int out[3];
                 out[0] = max<int>(blocks[0] - 2, 0);
-                out[1] = max<int>blocks[1]-2, 0);
+                out[1] = max<int>(blocks[1] - 2, 0);
                 out[2] = 27 + 4 + 1;
-                this->output_->Reshape(vector<int>{1, out[0], out[1], out[2]});
+
+                
+                vector<int> out_dims;
+                out_dims.resize(4);
+                out_dims[0] = 1; out_dims[1] = out[0];
+                out_dims[2] = out[1]; out_dims[3] = out[2];
+                
+                this->output_->Reshape(out_dims);
+                float* feat = this->output_->template mutable_data<float>();
 
                 int visible[2];
                 visible[0] = blocks[0] * sbin_;
                 visible[1] = blocks[1] * sbin_;
-
                 for (int x = 1; x < visible[1] - 1; x++)
                 {
                     for (int y = 1; y < visible[0] - 1; y++)
@@ -212,13 +222,13 @@ namespace kurff{
                         float *src, *p, n1, n2, n3, n4;
 
                         p = norm + (x + 1) * blocks[0] + y + 1;
-                        n1 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + eps);
+                        n1 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + FLOAT_EPS);
                         p = norm + (x + 1) * blocks[0] + y;
-                        n2 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + eps);
+                        n2 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + FLOAT_EPS);
                         p = norm + x * blocks[0] + y + 1;
-                        n3 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + eps);
+                        n3 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + FLOAT_EPS);
                         p = norm + x * blocks[0] + y;
-                        n4 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + eps);
+                        n4 = 1.0 / sqrt(*p + *(p + 1) + *(p + blocks[0]) + *(p + blocks[0] + 1) + FLOAT_EPS);
 
                         float t1 = 0;
                         float t2 = 0;
@@ -229,10 +239,10 @@ namespace kurff{
                         src = hist + (x + 1) * blocks[0] + (y + 1);
                         for (int o = 0; o < 18; o++)
                         {
-                            float h1 = min(*src * n1, 0.2);
-                            float h2 = min(*src * n2, 0.2);
-                            float h3 = min(*src * n3, 0.2);
-                            float h4 = min(*src * n4, 0.2);
+                            float h1 = min<float>(*src * n1, 0.2);
+                            float h2 = min<float>(*src * n2, 0.2);
+                            float h3 = min<float>(*src * n3, 0.2);
+                            float h4 = min<float>(*src * n4, 0.2);
                             *dst = 0.5 * (h1 + h2 + h3 + h4);
                             t1 += h1;
                             t2 += h2;
@@ -247,10 +257,10 @@ namespace kurff{
                         for (int o = 0; o < 9; o++)
                         {
                             float sum = *src + *(src + 9 * blocks[0] * blocks[1]);
-                            float h1 = min(sum * n1, 0.2);
-                            float h2 = min(sum * n2, 0.2);
-                            float h3 = min(sum * n3, 0.2);
-                            float h4 = min(sum * n4, 0.2);
+                            float h1 = min<float>(sum * n1, 0.2);
+                            float h2 = min<float>(sum * n2, 0.2);
+                            float h3 = min<float>(sum * n3, 0.2);
+                            float h4 = min<float>(sum * n4, 0.2);
                             *dst = 0.5 * (h1 + h2 + h3 + h4);
                             dst += out[0] * out[1];
                             src += blocks[0] * blocks[1];

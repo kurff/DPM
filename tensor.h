@@ -91,7 +91,7 @@ class Tensor {
   template <typename T,
             typename = typename std::enable_if<std::is_scalar<T>::value>::type>
   Tensor(const T& value, Context* context) {
-    Reshape(vector<int>{});
+    Reshape(std::vector<int>());
     context->template Copy<T, CPUContext, Context>(
         1, &value, mutable_data<T>());
   }
@@ -112,6 +112,7 @@ class Tensor {
    * items is the same, the underlying storage is kept.
    */
   void Reshape(const vector<int>& dims) {
+    //LOG(INFO)<<"size"<<size_;
     dims_ = dims;
     // Calculate the size.
     int new_size = 1;
@@ -302,5 +303,5 @@ class Tensor {
 template <class Context> class Tensor;
 typedef Tensor<CPUContext> TensorCPU;
 
-}  // namespace caffe2
-#endif  // CAFFE2_CORE_TENSOR_H_
+}  // namespace kurff
+#endif  // KURFF_CORE_TENSOR_H_

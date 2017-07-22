@@ -12,6 +12,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include "glog/logging.h"
 
 
 
@@ -24,7 +25,7 @@ namespace kurff{
         return ((x-floor(x))>0.5 ? ceil(x) : floor(x));
     }
     
-    #define float_eps 0.000001
+    #define FLOAT_EPS (0.000000001)
     template<typename T>
     static inline T min(T x, T y) { return (x <= y ? x : y); }
     template<typename T>

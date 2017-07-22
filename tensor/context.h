@@ -6,6 +6,7 @@
 #include "../proto/kurff.pb.h"
 #include "common.hpp"
 
+
 namespace kurff {
 
 /**
@@ -46,7 +47,7 @@ class CPUContext {
   explicit CPUContext(const DeviceOption& option)
       : random_generator_(
             option.has_random_seed() ? option.random_seed() : time(NULL)) {
-    KURFF_CHECK_EQ(option.device_type(), CPU);
+    CHECK_EQ(option.device_type(), CPU);
   }
 
   virtual ~CPUContext() {}

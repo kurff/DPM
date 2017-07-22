@@ -1,9 +1,9 @@
-#ifndef CAFFE2_CORE_TYPES_H_
-#define CAFFE2_CORE_TYPES_H_
+#ifndef __KURFF_CORE_TYPES_H__
+#define __KURFF_CORE_TYPES_H__
 
 #include <string>
 
-namespace caffe2 {
+namespace kurff {
 
 // Storage orders that are often used in the image applications.
 enum StorageOrder {
@@ -22,6 +22,6 @@ inline StorageOrder StringToStorageOrder(const string& str) {
   }
 }
 
-}  // namespace caffe2
+}  // namespace kurff
 
-#endif  // CAFFE2_CORE_TYPES_H_
+#endif  // KURFF_CORE_TYPES_H_

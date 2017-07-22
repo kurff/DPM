@@ -102,7 +102,7 @@ void AddToCol<float, CPUContext>(
 }
 
 
-// Caffe2 gemm provides a simpler interface to the gemm functions, with the
+// kurff gemm provides a simpler interface to the gemm functions, with the
 // limitation that the data has to be contiguous in memory.
 // A (M*K) * B(K*N) = C(M*N)
 template <>
@@ -161,7 +161,7 @@ void Gemv<float, CPUContext>(
     CPUContext* context) {
   EigenVectorMap<float> y_vec(y, TransA == CblasNoTrans ? M : N);
   if (beta == 0) {
-    // In Caffe2 we often do a lazy initialization, which may contain NaNs in
+    // In Kurff we often do a lazy initialization, which may contain NaNs in
     // the float values. As a result, if beta is 0, we explicitly do a setzero.
     y_vec.setZero();
   } else {

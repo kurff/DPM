@@ -104,6 +104,6 @@ inline DB* CreateDB(const string& db_type, const string& source, Mode mode) {
 }
 
 }  // namespace db
-}  // namespace caffe2
+}  // namespace KURFF
 
 #endif  // _KURFF_DB_H_

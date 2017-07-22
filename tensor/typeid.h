@@ -1,12 +1,12 @@
-#ifndef CAFFE2_CORE_TYPEID_H_
-#define CAFFE2_CORE_TYPEID_H_
+#ifndef __KURFF_CORE_TYPEID_H__
+#define __KURFF_CORE_TYPEID_H__
 
 #include <map>
 #include <typeinfo>
 
 #include "common.hpp"
 
-namespace caffe2 {
+namespace kurff {
 
 typedef intptr_t CaffeTypeId;
 
@@ -98,6 +98,6 @@ class TypeMeta {
   const char* name_;
 };
 
-}  // namespace caffe2
+}  // namespace kurff
 
-#endif  // CAFFE2_CORE_TYPEID_H_
+#endif  // KURFF_CORE_TYPEID_H_
