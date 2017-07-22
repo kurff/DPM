@@ -45,6 +45,20 @@ message HOGParameters{
     required int32 sbin = 1 [default=4];
     optional string name = 2;
 }
+message ConvParameters{
+  required int32 pad_b; [default=1];
+  required int32 kernel_h;
+  required int32 pad_l;
+  required int32 pad_r;
+  required int32 pad_t;
+  required int32 kernel_h;
+  required int32 kernel_w;
+  required int32 kernel_d;
+  required int32 stride_w;
+  required int32 stride_h;
+
+
+}
 
 enum DeviceType {
   CPU = 0;                    // In default, we will use CPU.
@@ -66,6 +80,7 @@ message DeviceOption {
 
 message Parameters{
     optional HOGParameters hog_parameters =1;
+    optional ConvParameters conv_parameters = 2;
     
 
 

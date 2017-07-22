@@ -18,9 +18,8 @@ namespace kurff{
     template<typename Context>
     class Feature{
         public:
-            Feature():input_(nullptr),output_(new Tensor<Context>()){
+            Feature():input_(nullptr),output_(shared_ptr<Tensor<Context> > (new Tensor<Context> ())){
                 
-
             }
             
             ~Feature(){
@@ -37,11 +36,11 @@ namespace kurff{
             virtual bool run() = 0;
 
             void set_input(Tensor<Context>* input){
-                input_ = input;
+                input_ = shared_ptr<Tensor<Context> >(input);
             }
 
-            Tensor<Context*> get_output(){
-                return output_;
+            Tensor<Context>* get_output(){
+                return output_.get();
             }
             //virtual bool destroy() = 0;
 
@@ -49,8 +48,8 @@ namespace kurff{
             
 
         protected:
-            Tensor<Context>* input_;
-            Tensor<Context>* output_;
+            shared_ptr< Tensor<Context> > input_;
+            shared_ptr< Tensor<Context> > output_;
 
 
 

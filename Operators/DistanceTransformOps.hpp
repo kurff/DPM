@@ -8,6 +8,8 @@
 
 
 // Distance Transform
+
+namespace kurff{
 template<typename Context>
 class DTOps: public Operator<Context>{
     public:
@@ -77,5 +79,5 @@ class DTOps: public Operator<Context>{
 
 
 };
-
+}
 #endif
