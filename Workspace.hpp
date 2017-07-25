@@ -5,11 +5,15 @@
 #include <string>
 using namespace std;
 
+
+namespace kurff{
+class Model;
+
 template<typename Context>
 class Workspace{
     public:
-        typedef KurffMap<string, unique_ptr<Tensor<Context> > > TensorMap;
-        typedef CaffeMap<string, unique_ptr<Model<Context> > > ModelMap;
+        typedef kurffMap<string, unique_ptr< Tensor<Context> > > TensorMap;
+        typedef kurffMap<string, unique_ptr< Model<Context> > > ModelMap;
         Workspace():tensor_map_(new TensorMap ()){
 
 
@@ -95,3 +99,4 @@ class Workspace{
 
 
 };
+}

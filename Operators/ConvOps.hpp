@@ -72,6 +72,7 @@ class ConvOps: public Operator<Context>{
             return true;
         }
         bool run(){
+
             int channels = input_->dims()[3];
             int height = input_->dims()[1];
             int width = input_->dims()[2];

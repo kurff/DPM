@@ -7,9 +7,9 @@
 #include <type_traits>
 #include <vector>
 
-#include "./tensor/common.hpp"
-#include "./tensor/context.h"
-#include "./tensor/typeid.h"
+#include "tensor/common.hpp"
+#include "tensor/context.h"
+#include "tensor/typeid.h"
 #include "glog/logging.h"
 
 namespace kurff {

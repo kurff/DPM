@@ -35,8 +35,8 @@ namespace kurff{
 
 
 
-            size_t get_number_vertices(){return graph_.size();}
-            Node get_node(size_t idx){return graph_[idx];}
+            //size_t get_number_vertices(){return graph_.size();}
+            //Node get_node(size_t idx){return graph_[idx];}
             
             // setup a graph
             // load graph configuration and setup the graph

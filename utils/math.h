@@ -8,7 +8,7 @@ extern "C" {
 #include "cblas.h"
 }
 
-#include "../tensor/common.hpp"
+#include "tensor/common.hpp"
 
 
 namespace kurff {

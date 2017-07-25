@@ -4,6 +4,7 @@ package kurff;
 message TensorProto{
     repeated float data = 1;
     repeated int32 dims = 2;
+    optional string name = 3;
 }
 
 
@@ -46,16 +47,15 @@ message HOGParameters{
     optional string name = 2;
 }
 message ConvParameters{
-  required int32 pad_b; [default=1];
-  required int32 kernel_h;
-  required int32 pad_l;
-  required int32 pad_r;
-  required int32 pad_t;
-  required int32 kernel_h;
-  required int32 kernel_w;
-  required int32 kernel_d;
-  required int32 stride_w;
-  required int32 stride_h;
+  required int32 pad_b = 1 [default=1];
+  required int32 pad_l = 3;
+  required int32 pad_r = 4;
+  required int32 pad_t = 5;
+  required int32 kernel_h = 6;
+  required int32 kernel_w = 7;
+  required int32 kernel_d = 8;
+  required int32 stride_w = 9;
+  required int32 stride_h = 10;
 
 
 }

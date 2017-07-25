@@ -5,7 +5,7 @@
 #define _KURFF_OPERATOR_HPP_
 #include <iostream>
 
-#include "./tensor/common.hpp"
+#include "tensor/common.hpp"
 #include "Operator.hpp"
 #include "Parameters.hpp"
 #include "tensor.h"
@@ -17,7 +17,7 @@ using namespace std;
 
 // Operator of model 
 // 
-
+namespace kurff{
 class OperatorBase{
     public:
         OperatorBase(){
@@ -61,5 +61,5 @@ class Operator: public OperatorBase{
 
 
 
-
+}
 #endif

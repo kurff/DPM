@@ -2,11 +2,11 @@
 #define _KURFF_MODEL_HPP_
 #include <iostream>
 
-#include "./tensor/common.hpp"
+#include "tensor/common.hpp"
 #include "Operator.hpp"
 #include "tensor.h"
 #include "graph/graph.hpp"
-#include "Workspace.hpp"
+//#include "Workspace.hpp"
 #include "proto/kurff.pb.h"
 #include "graph/node.hpp"
 
@@ -15,6 +15,8 @@ using namespace std;
 
 namespace kurff{
 
+class Workspace;
+class OperatorBase;
 template <typename Context>
 class Model{
     public:
@@ -27,8 +29,6 @@ class Model{
 
 
         }
-
-        virtual bool deserialize(string file) = 0;
 
         virtual bool setup(Workspace* ws, const Parameters& para) = 0;
         //virtual bool run() = 0;
@@ -87,18 +87,10 @@ class DPModel{
 
         }
 
-        bool deserialize(string file){
 
-            ifstream f(file.c_str(),ios::in);
-            
-
-            f.close();
-
-            return true;
-        }
 
         bool setup(Workspace* ws, const Parameters& para){
-            ParametersBase* ptr = para["Conv"];
+            
             
             return true;
         }

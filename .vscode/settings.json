@@ -30,6 +30,7 @@
         "__functional_base": "cpp",
         "istream": "cpp",
         "locale": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "typeinfo": "cpp"
     }
 }

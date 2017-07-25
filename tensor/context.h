@@ -3,7 +3,7 @@
 
 #include <ctime>
 #include <random>
-#include "../proto/kurff.pb.h"
+#include "proto/kurff.pb.h"
 #include "common.hpp"
 
 

@@ -38,6 +38,9 @@ extern AnnotationDefaultTypeInternal _Annotation_default_instance_;
 class AnnotationGroup;
 class AnnotationGroupDefaultTypeInternal;
 extern AnnotationGroupDefaultTypeInternal _AnnotationGroup_default_instance_;
+class ConvParameters;
+class ConvParametersDefaultTypeInternal;
+extern ConvParametersDefaultTypeInternal _ConvParameters_default_instance_;
 class Datum;
 class DatumDefaultTypeInternal;
 extern DatumDefaultTypeInternal _Datum_default_instance_;
@@ -199,14 +202,32 @@ class TensorProto : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
       mutable_dims();
 
+  // optional string name = 3;
+  bool has_name() const;
+  void clear_name();
+  static const int kNameFieldNumber = 3;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
   // @@protoc_insertion_point(class_scope:kurff.TensorProto)
  private:
+  void set_has_name();
+  void clear_has_name();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
   ::google::protobuf::RepeatedField< float > data_;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 > dims_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
   friend struct protobuf_kurff_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -855,6 +876,181 @@ class HOGParameters : public ::google::protobuf::Message /* @@protoc_insertion_p
 };
 // -------------------------------------------------------------------
 
+class ConvParameters : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.ConvParameters) */ {
+ public:
+  ConvParameters();
+  virtual ~ConvParameters();
+
+  ConvParameters(const ConvParameters& from);
+
+  inline ConvParameters& operator=(const ConvParameters& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ConvParameters& default_instance();
+
+  static inline const ConvParameters* internal_default_instance() {
+    return reinterpret_cast<const ConvParameters*>(
+               &_ConvParameters_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    6;
+
+  void Swap(ConvParameters* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ConvParameters* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  ConvParameters* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const ConvParameters& from);
+  void MergeFrom(const ConvParameters& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(ConvParameters* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 pad_l = 3;
+  bool has_pad_l() const;
+  void clear_pad_l();
+  static const int kPadLFieldNumber = 3;
+  ::google::protobuf::int32 pad_l() const;
+  void set_pad_l(::google::protobuf::int32 value);
+
+  // required int32 pad_r = 4;
+  bool has_pad_r() const;
+  void clear_pad_r();
+  static const int kPadRFieldNumber = 4;
+  ::google::protobuf::int32 pad_r() const;
+  void set_pad_r(::google::protobuf::int32 value);
+
+  // required int32 pad_t = 5;
+  bool has_pad_t() const;
+  void clear_pad_t();
+  static const int kPadTFieldNumber = 5;
+  ::google::protobuf::int32 pad_t() const;
+  void set_pad_t(::google::protobuf::int32 value);
+
+  // required int32 kernel_h = 6;
+  bool has_kernel_h() const;
+  void clear_kernel_h();
+  static const int kKernelHFieldNumber = 6;
+  ::google::protobuf::int32 kernel_h() const;
+  void set_kernel_h(::google::protobuf::int32 value);
+
+  // required int32 kernel_w = 7;
+  bool has_kernel_w() const;
+  void clear_kernel_w();
+  static const int kKernelWFieldNumber = 7;
+  ::google::protobuf::int32 kernel_w() const;
+  void set_kernel_w(::google::protobuf::int32 value);
+
+  // required int32 kernel_d = 8;
+  bool has_kernel_d() const;
+  void clear_kernel_d();
+  static const int kKernelDFieldNumber = 8;
+  ::google::protobuf::int32 kernel_d() const;
+  void set_kernel_d(::google::protobuf::int32 value);
+
+  // required int32 stride_w = 9;
+  bool has_stride_w() const;
+  void clear_stride_w();
+  static const int kStrideWFieldNumber = 9;
+  ::google::protobuf::int32 stride_w() const;
+  void set_stride_w(::google::protobuf::int32 value);
+
+  // required int32 stride_h = 10;
+  bool has_stride_h() const;
+  void clear_stride_h();
+  static const int kStrideHFieldNumber = 10;
+  ::google::protobuf::int32 stride_h() const;
+  void set_stride_h(::google::protobuf::int32 value);
+
+  // required int32 pad_b = 1 [default = 1];
+  bool has_pad_b() const;
+  void clear_pad_b();
+  static const int kPadBFieldNumber = 1;
+  ::google::protobuf::int32 pad_b() const;
+  void set_pad_b(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:kurff.ConvParameters)
+ private:
+  void set_has_pad_b();
+  void clear_has_pad_b();
+  void set_has_pad_l();
+  void clear_has_pad_l();
+  void set_has_pad_r();
+  void clear_has_pad_r();
+  void set_has_pad_t();
+  void clear_has_pad_t();
+  void set_has_kernel_h();
+  void clear_has_kernel_h();
+  void set_has_kernel_w();
+  void clear_has_kernel_w();
+  void set_has_kernel_d();
+  void clear_has_kernel_d();
+  void set_has_stride_w();
+  void clear_has_stride_w();
+  void set_has_stride_h();
+  void clear_has_stride_h();
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::int32 pad_l_;
+  ::google::protobuf::int32 pad_r_;
+  ::google::protobuf::int32 pad_t_;
+  ::google::protobuf::int32 kernel_h_;
+  ::google::protobuf::int32 kernel_w_;
+  ::google::protobuf::int32 kernel_d_;
+  ::google::protobuf::int32 stride_w_;
+  ::google::protobuf::int32 stride_h_;
+  ::google::protobuf::int32 pad_b_;
+  friend struct protobuf_kurff_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class DeviceOption : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:kurff.DeviceOption) */ {
  public:
   DeviceOption();
@@ -883,7 +1079,7 @@ class DeviceOption : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_DeviceOption_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(DeviceOption* other);
 
@@ -995,7 +1191,7 @@ class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_Parameters_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(Parameters* other);
 
@@ -1048,15 +1244,27 @@ class Parameters : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::kurff::HOGParameters* release_hog_parameters();
   void set_allocated_hog_parameters(::kurff::HOGParameters* hog_parameters);
 
+  // optional .kurff.ConvParameters conv_parameters = 2;
+  bool has_conv_parameters() const;
+  void clear_conv_parameters();
+  static const int kConvParametersFieldNumber = 2;
+  const ::kurff::ConvParameters& conv_parameters() const;
+  ::kurff::ConvParameters* mutable_conv_parameters();
+  ::kurff::ConvParameters* release_conv_parameters();
+  void set_allocated_conv_parameters(::kurff::ConvParameters* conv_parameters);
+
   // @@protoc_insertion_point(class_scope:kurff.Parameters)
  private:
   void set_has_hog_parameters();
   void clear_has_hog_parameters();
+  void set_has_conv_parameters();
+  void clear_has_conv_parameters();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
   ::kurff::HOGParameters* hog_parameters_;
+  ::kurff::ConvParameters* conv_parameters_;
   friend struct protobuf_kurff_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -1089,7 +1297,7 @@ class ModelDef : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_ModelDef_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(ModelDef* other);
 
@@ -1171,7 +1379,7 @@ class OperatorDef : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_OperatorDef_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    10;
 
   void Swap(OperatorDef* other);
 
@@ -1289,6 +1497,69 @@ inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 TensorProto::mutable_dims() {
   // @@protoc_insertion_point(field_mutable_list:kurff.TensorProto.dims)
   return &dims_;
+}
+
+// optional string name = 3;
+inline bool TensorProto::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TensorProto::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TensorProto::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TensorProto::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+inline const ::std::string& TensorProto::name() const {
+  // @@protoc_insertion_point(field_get:kurff.TensorProto.name)
+  return name_.GetNoArena();
+}
+inline void TensorProto::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:kurff.TensorProto.name)
+}
+#if LANG_CXX11
+inline void TensorProto::set_name(::std::string&& value) {
+  set_has_name();
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kurff.TensorProto.name)
+}
+#endif
+inline void TensorProto::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kurff.TensorProto.name)
+}
+inline void TensorProto::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kurff.TensorProto.name)
+}
+inline ::std::string* TensorProto::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:kurff.TensorProto.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TensorProto::release_name() {
+  // @@protoc_insertion_point(field_release:kurff.TensorProto.name)
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TensorProto::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:kurff.TensorProto.name)
 }
 
 // -------------------------------------------------------------------
@@ -1928,6 +2199,226 @@ inline void HOGParameters::set_allocated_name(::std::string* name) {
 
 // -------------------------------------------------------------------
 
+// ConvParameters
+
+// required int32 pad_b = 1 [default = 1];
+inline bool ConvParameters::has_pad_b() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void ConvParameters::set_has_pad_b() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void ConvParameters::clear_has_pad_b() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void ConvParameters::clear_pad_b() {
+  pad_b_ = 1;
+  clear_has_pad_b();
+}
+inline ::google::protobuf::int32 ConvParameters::pad_b() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.pad_b)
+  return pad_b_;
+}
+inline void ConvParameters::set_pad_b(::google::protobuf::int32 value) {
+  set_has_pad_b();
+  pad_b_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.pad_b)
+}
+
+// required int32 pad_l = 3;
+inline bool ConvParameters::has_pad_l() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ConvParameters::set_has_pad_l() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ConvParameters::clear_has_pad_l() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ConvParameters::clear_pad_l() {
+  pad_l_ = 0;
+  clear_has_pad_l();
+}
+inline ::google::protobuf::int32 ConvParameters::pad_l() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.pad_l)
+  return pad_l_;
+}
+inline void ConvParameters::set_pad_l(::google::protobuf::int32 value) {
+  set_has_pad_l();
+  pad_l_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.pad_l)
+}
+
+// required int32 pad_r = 4;
+inline bool ConvParameters::has_pad_r() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ConvParameters::set_has_pad_r() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ConvParameters::clear_has_pad_r() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ConvParameters::clear_pad_r() {
+  pad_r_ = 0;
+  clear_has_pad_r();
+}
+inline ::google::protobuf::int32 ConvParameters::pad_r() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.pad_r)
+  return pad_r_;
+}
+inline void ConvParameters::set_pad_r(::google::protobuf::int32 value) {
+  set_has_pad_r();
+  pad_r_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.pad_r)
+}
+
+// required int32 pad_t = 5;
+inline bool ConvParameters::has_pad_t() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ConvParameters::set_has_pad_t() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ConvParameters::clear_has_pad_t() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ConvParameters::clear_pad_t() {
+  pad_t_ = 0;
+  clear_has_pad_t();
+}
+inline ::google::protobuf::int32 ConvParameters::pad_t() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.pad_t)
+  return pad_t_;
+}
+inline void ConvParameters::set_pad_t(::google::protobuf::int32 value) {
+  set_has_pad_t();
+  pad_t_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.pad_t)
+}
+
+// required int32 kernel_h = 6;
+inline bool ConvParameters::has_kernel_h() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ConvParameters::set_has_kernel_h() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ConvParameters::clear_has_kernel_h() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ConvParameters::clear_kernel_h() {
+  kernel_h_ = 0;
+  clear_has_kernel_h();
+}
+inline ::google::protobuf::int32 ConvParameters::kernel_h() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.kernel_h)
+  return kernel_h_;
+}
+inline void ConvParameters::set_kernel_h(::google::protobuf::int32 value) {
+  set_has_kernel_h();
+  kernel_h_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.kernel_h)
+}
+
+// required int32 kernel_w = 7;
+inline bool ConvParameters::has_kernel_w() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ConvParameters::set_has_kernel_w() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ConvParameters::clear_has_kernel_w() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ConvParameters::clear_kernel_w() {
+  kernel_w_ = 0;
+  clear_has_kernel_w();
+}
+inline ::google::protobuf::int32 ConvParameters::kernel_w() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.kernel_w)
+  return kernel_w_;
+}
+inline void ConvParameters::set_kernel_w(::google::protobuf::int32 value) {
+  set_has_kernel_w();
+  kernel_w_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.kernel_w)
+}
+
+// required int32 kernel_d = 8;
+inline bool ConvParameters::has_kernel_d() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void ConvParameters::set_has_kernel_d() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void ConvParameters::clear_has_kernel_d() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void ConvParameters::clear_kernel_d() {
+  kernel_d_ = 0;
+  clear_has_kernel_d();
+}
+inline ::google::protobuf::int32 ConvParameters::kernel_d() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.kernel_d)
+  return kernel_d_;
+}
+inline void ConvParameters::set_kernel_d(::google::protobuf::int32 value) {
+  set_has_kernel_d();
+  kernel_d_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.kernel_d)
+}
+
+// required int32 stride_w = 9;
+inline bool ConvParameters::has_stride_w() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ConvParameters::set_has_stride_w() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ConvParameters::clear_has_stride_w() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ConvParameters::clear_stride_w() {
+  stride_w_ = 0;
+  clear_has_stride_w();
+}
+inline ::google::protobuf::int32 ConvParameters::stride_w() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.stride_w)
+  return stride_w_;
+}
+inline void ConvParameters::set_stride_w(::google::protobuf::int32 value) {
+  set_has_stride_w();
+  stride_w_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.stride_w)
+}
+
+// required int32 stride_h = 10;
+inline bool ConvParameters::has_stride_h() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void ConvParameters::set_has_stride_h() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void ConvParameters::clear_has_stride_h() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void ConvParameters::clear_stride_h() {
+  stride_h_ = 0;
+  clear_has_stride_h();
+}
+inline ::google::protobuf::int32 ConvParameters::stride_h() const {
+  // @@protoc_insertion_point(field_get:kurff.ConvParameters.stride_h)
+  return stride_h_;
+}
+inline void ConvParameters::set_stride_h(::google::protobuf::int32 value) {
+  set_has_stride_h();
+  stride_h_ = value;
+  // @@protoc_insertion_point(field_set:kurff.ConvParameters.stride_h)
+}
+
+// -------------------------------------------------------------------
+
 // DeviceOption
 
 // optional int32 device_type = 1 [default = 0];
@@ -2051,6 +2542,51 @@ inline void Parameters::set_allocated_hog_parameters(::kurff::HOGParameters* hog
   // @@protoc_insertion_point(field_set_allocated:kurff.Parameters.hog_parameters)
 }
 
+// optional .kurff.ConvParameters conv_parameters = 2;
+inline bool Parameters::has_conv_parameters() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Parameters::set_has_conv_parameters() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Parameters::clear_has_conv_parameters() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Parameters::clear_conv_parameters() {
+  if (conv_parameters_ != NULL) conv_parameters_->::kurff::ConvParameters::Clear();
+  clear_has_conv_parameters();
+}
+inline const ::kurff::ConvParameters& Parameters::conv_parameters() const {
+  // @@protoc_insertion_point(field_get:kurff.Parameters.conv_parameters)
+  return conv_parameters_ != NULL ? *conv_parameters_
+                         : *::kurff::ConvParameters::internal_default_instance();
+}
+inline ::kurff::ConvParameters* Parameters::mutable_conv_parameters() {
+  set_has_conv_parameters();
+  if (conv_parameters_ == NULL) {
+    conv_parameters_ = new ::kurff::ConvParameters;
+  }
+  // @@protoc_insertion_point(field_mutable:kurff.Parameters.conv_parameters)
+  return conv_parameters_;
+}
+inline ::kurff::ConvParameters* Parameters::release_conv_parameters() {
+  // @@protoc_insertion_point(field_release:kurff.Parameters.conv_parameters)
+  clear_has_conv_parameters();
+  ::kurff::ConvParameters* temp = conv_parameters_;
+  conv_parameters_ = NULL;
+  return temp;
+}
+inline void Parameters::set_allocated_conv_parameters(::kurff::ConvParameters* conv_parameters) {
+  delete conv_parameters_;
+  conv_parameters_ = conv_parameters;
+  if (conv_parameters) {
+    set_has_conv_parameters();
+  } else {
+    clear_has_conv_parameters();
+  }
+  // @@protoc_insertion_point(field_set_allocated:kurff.Parameters.conv_parameters)
+}
+
 // -------------------------------------------------------------------
 
 // ModelDef
@@ -2060,6 +2596,8 @@ inline void Parameters::set_allocated_hog_parameters(::kurff::HOGParameters* hog
 // OperatorDef
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

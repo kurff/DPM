@@ -4,8 +4,8 @@
 #ifndef _KURFF_FEATURE_HPP_
 #define _KURFF_FEATURE_HPP_
 
-#include "./tensor/common.hpp"
-#include "./proto/kurff.pb.h"
+#include "tensor/common.hpp"
+#include "proto/kurff.pb.h"
 #include "tensor.h"
 #include <iostream>
 #include <vector>
