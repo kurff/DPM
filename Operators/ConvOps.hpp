@@ -10,6 +10,10 @@
 
 #include "../proto/kurff.pb.h"
 
+namespace kurff{
+
+
+
 
 template<typename Context>
 class ConvOps: public Operator<Context>{
@@ -148,4 +152,5 @@ class ConvOps: public Operator<Context>{
 
 };
 
+}
 #endif

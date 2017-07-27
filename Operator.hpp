@@ -47,7 +47,8 @@ class Operator: public OperatorBase{
         virtual bool run() = 0;
 
     protected:
-        KurffMap<string, Tensor<Context> > extern_input_;
+        KurffMap<string, Tensor<Context> > extern_input_; // parameters of convolution
+        
 
     private:
 

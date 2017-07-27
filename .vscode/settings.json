@@ -31,6 +31,8 @@
         "istream": "cpp",
         "locale": "cpp",
         "tuple": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "macros.h": "c",
+        "perf_counter.c": "cpp"
     }
 }
