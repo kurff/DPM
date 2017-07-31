@@ -1423,12 +1423,106 @@ class OperatorDef : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
+  // repeated string input = 2;
+  int input_size() const;
+  void clear_input();
+  static const int kInputFieldNumber = 2;
+  const ::std::string& input(int index) const;
+  ::std::string* mutable_input(int index);
+  void set_input(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_input(int index, ::std::string&& value);
+  #endif
+  void set_input(int index, const char* value);
+  void set_input(int index, const char* value, size_t size);
+  ::std::string* add_input();
+  void add_input(const ::std::string& value);
+  #if LANG_CXX11
+  void add_input(::std::string&& value);
+  #endif
+  void add_input(const char* value);
+  void add_input(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& input() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_input();
+
+  // repeated string output = 3;
+  int output_size() const;
+  void clear_output();
+  static const int kOutputFieldNumber = 3;
+  const ::std::string& output(int index) const;
+  ::std::string* mutable_output(int index);
+  void set_output(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_output(int index, ::std::string&& value);
+  #endif
+  void set_output(int index, const char* value);
+  void set_output(int index, const char* value, size_t size);
+  ::std::string* add_output();
+  void add_output(const ::std::string& value);
+  #if LANG_CXX11
+  void add_output(::std::string&& value);
+  #endif
+  void add_output(const char* value);
+  void add_output(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& output() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_output();
+
+  // optional string name = 1;
+  bool has_name() const;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // optional string engine = 5;
+  bool has_engine() const;
+  void clear_engine();
+  static const int kEngineFieldNumber = 5;
+  const ::std::string& engine() const;
+  void set_engine(const ::std::string& value);
+  #if LANG_CXX11
+  void set_engine(::std::string&& value);
+  #endif
+  void set_engine(const char* value);
+  void set_engine(const char* value, size_t size);
+  ::std::string* mutable_engine();
+  ::std::string* release_engine();
+  void set_allocated_engine(::std::string* engine);
+
+  // optional .kurff.DeviceOption device_option = 4;
+  bool has_device_option() const;
+  void clear_device_option();
+  static const int kDeviceOptionFieldNumber = 4;
+  const ::kurff::DeviceOption& device_option() const;
+  ::kurff::DeviceOption* mutable_device_option();
+  ::kurff::DeviceOption* release_device_option();
+  void set_allocated_device_option(::kurff::DeviceOption* device_option);
+
   // @@protoc_insertion_point(class_scope:kurff.OperatorDef)
  private:
+  void set_has_name();
+  void clear_has_name();
+  void set_has_device_option();
+  void clear_has_device_option();
+  void set_has_engine();
+  void clear_has_engine();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> input_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> output_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr engine_;
+  ::kurff::DeviceOption* device_option_;
   friend struct protobuf_kurff_2eproto::TableStruct;
 };
 // ===================================================================
@@ -2594,6 +2688,315 @@ inline void Parameters::set_allocated_conv_parameters(::kurff::ConvParameters* c
 // -------------------------------------------------------------------
 
 // OperatorDef
+
+// optional string name = 1;
+inline bool OperatorDef::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void OperatorDef::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void OperatorDef::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void OperatorDef::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+inline const ::std::string& OperatorDef::name() const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.name)
+  return name_.GetNoArena();
+}
+inline void OperatorDef::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.name)
+}
+#if LANG_CXX11
+inline void OperatorDef::set_name(::std::string&& value) {
+  set_has_name();
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kurff.OperatorDef.name)
+}
+#endif
+inline void OperatorDef::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.name)
+}
+inline void OperatorDef::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.name)
+}
+inline ::std::string* OperatorDef::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* OperatorDef::release_name() {
+  // @@protoc_insertion_point(field_release:kurff.OperatorDef.name)
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void OperatorDef::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:kurff.OperatorDef.name)
+}
+
+// repeated string input = 2;
+inline int OperatorDef::input_size() const {
+  return input_.size();
+}
+inline void OperatorDef::clear_input() {
+  input_.Clear();
+}
+inline const ::std::string& OperatorDef::input(int index) const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.input)
+  return input_.Get(index);
+}
+inline ::std::string* OperatorDef::mutable_input(int index) {
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.input)
+  return input_.Mutable(index);
+}
+inline void OperatorDef::set_input(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.input)
+  input_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void OperatorDef::set_input(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.input)
+  input_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void OperatorDef::set_input(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  input_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.input)
+}
+inline void OperatorDef::set_input(int index, const char* value, size_t size) {
+  input_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.input)
+}
+inline ::std::string* OperatorDef::add_input() {
+  // @@protoc_insertion_point(field_add_mutable:kurff.OperatorDef.input)
+  return input_.Add();
+}
+inline void OperatorDef::add_input(const ::std::string& value) {
+  input_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.input)
+}
+#if LANG_CXX11
+inline void OperatorDef::add_input(::std::string&& value) {
+  input_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.input)
+}
+#endif
+inline void OperatorDef::add_input(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  input_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kurff.OperatorDef.input)
+}
+inline void OperatorDef::add_input(const char* value, size_t size) {
+  input_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kurff.OperatorDef.input)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+OperatorDef::input() const {
+  // @@protoc_insertion_point(field_list:kurff.OperatorDef.input)
+  return input_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+OperatorDef::mutable_input() {
+  // @@protoc_insertion_point(field_mutable_list:kurff.OperatorDef.input)
+  return &input_;
+}
+
+// repeated string output = 3;
+inline int OperatorDef::output_size() const {
+  return output_.size();
+}
+inline void OperatorDef::clear_output() {
+  output_.Clear();
+}
+inline const ::std::string& OperatorDef::output(int index) const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.output)
+  return output_.Get(index);
+}
+inline ::std::string* OperatorDef::mutable_output(int index) {
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.output)
+  return output_.Mutable(index);
+}
+inline void OperatorDef::set_output(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.output)
+  output_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void OperatorDef::set_output(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.output)
+  output_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void OperatorDef::set_output(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  output_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.output)
+}
+inline void OperatorDef::set_output(int index, const char* value, size_t size) {
+  output_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.output)
+}
+inline ::std::string* OperatorDef::add_output() {
+  // @@protoc_insertion_point(field_add_mutable:kurff.OperatorDef.output)
+  return output_.Add();
+}
+inline void OperatorDef::add_output(const ::std::string& value) {
+  output_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.output)
+}
+#if LANG_CXX11
+inline void OperatorDef::add_output(::std::string&& value) {
+  output_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.output)
+}
+#endif
+inline void OperatorDef::add_output(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  output_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kurff.OperatorDef.output)
+}
+inline void OperatorDef::add_output(const char* value, size_t size) {
+  output_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kurff.OperatorDef.output)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+OperatorDef::output() const {
+  // @@protoc_insertion_point(field_list:kurff.OperatorDef.output)
+  return output_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+OperatorDef::mutable_output() {
+  // @@protoc_insertion_point(field_mutable_list:kurff.OperatorDef.output)
+  return &output_;
+}
+
+// optional .kurff.DeviceOption device_option = 4;
+inline bool OperatorDef::has_device_option() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void OperatorDef::set_has_device_option() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void OperatorDef::clear_has_device_option() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void OperatorDef::clear_device_option() {
+  if (device_option_ != NULL) device_option_->::kurff::DeviceOption::Clear();
+  clear_has_device_option();
+}
+inline const ::kurff::DeviceOption& OperatorDef::device_option() const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.device_option)
+  return device_option_ != NULL ? *device_option_
+                         : *::kurff::DeviceOption::internal_default_instance();
+}
+inline ::kurff::DeviceOption* OperatorDef::mutable_device_option() {
+  set_has_device_option();
+  if (device_option_ == NULL) {
+    device_option_ = new ::kurff::DeviceOption;
+  }
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.device_option)
+  return device_option_;
+}
+inline ::kurff::DeviceOption* OperatorDef::release_device_option() {
+  // @@protoc_insertion_point(field_release:kurff.OperatorDef.device_option)
+  clear_has_device_option();
+  ::kurff::DeviceOption* temp = device_option_;
+  device_option_ = NULL;
+  return temp;
+}
+inline void OperatorDef::set_allocated_device_option(::kurff::DeviceOption* device_option) {
+  delete device_option_;
+  device_option_ = device_option;
+  if (device_option) {
+    set_has_device_option();
+  } else {
+    clear_has_device_option();
+  }
+  // @@protoc_insertion_point(field_set_allocated:kurff.OperatorDef.device_option)
+}
+
+// optional string engine = 5;
+inline bool OperatorDef::has_engine() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void OperatorDef::set_has_engine() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void OperatorDef::clear_has_engine() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void OperatorDef::clear_engine() {
+  engine_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_engine();
+}
+inline const ::std::string& OperatorDef::engine() const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.engine)
+  return engine_.GetNoArena();
+}
+inline void OperatorDef::set_engine(const ::std::string& value) {
+  set_has_engine();
+  engine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.engine)
+}
+#if LANG_CXX11
+inline void OperatorDef::set_engine(::std::string&& value) {
+  set_has_engine();
+  engine_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kurff.OperatorDef.engine)
+}
+#endif
+inline void OperatorDef::set_engine(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_engine();
+  engine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.engine)
+}
+inline void OperatorDef::set_engine(const char* value, size_t size) {
+  set_has_engine();
+  engine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.engine)
+}
+inline ::std::string* OperatorDef::mutable_engine() {
+  set_has_engine();
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.engine)
+  return engine_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* OperatorDef::release_engine() {
+  // @@protoc_insertion_point(field_release:kurff.OperatorDef.engine)
+  clear_has_engine();
+  return engine_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void OperatorDef::set_allocated_engine(::std::string* engine) {
+  if (engine != NULL) {
+    set_has_engine();
+  } else {
+    clear_has_engine();
+  }
+  engine_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), engine);
+  // @@protoc_insertion_point(field_set_allocated:kurff.OperatorDef.engine)
+}
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 // -------------------------------------------------------------------

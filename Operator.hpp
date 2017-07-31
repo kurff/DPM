@@ -10,6 +10,7 @@
 #include "Parameters.hpp"
 #include "tensor.h"
 #include "Workspace.hpp"
+#include "proto/kurff.pb.h"
 #include <string.h>
 using namespace std;
 
@@ -20,7 +21,7 @@ using namespace std;
 namespace kurff{
 class OperatorBase{
     public:
-        OperatorBase(){
+        OperatorBase(const OperatorDef& operator_def, Workspace* ws){
 
         }
         ~OperatorBase(){
@@ -33,7 +34,8 @@ template<typename Context>
 
 class Operator: public OperatorBase{
     public:
-        Operator(){
+        Operator(const OperatorDef& operator_def, Workspace* ws): OperatorBase(operator_def, ws)
+        , context_(operator_def.device_option()){
 
 
         }

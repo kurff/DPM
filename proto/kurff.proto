@@ -86,12 +86,21 @@ message Parameters{
 
 }
 
+
+
 message ModelDef{
   
 
 }
 
 message OperatorDef{
+  optional string name = 1;
+  repeated string input = 2;
+  repeated string output = 3;
+  optional DeviceOption device_option = 4;
+  optional string engine = 5;
+    
+
   
 
 }

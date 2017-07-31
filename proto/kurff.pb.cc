@@ -207,6 +207,16 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, input_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, output_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, device_option_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OperatorDef, engine_),
+  0,
+  ~0u,
+  ~0u,
+  2,
+  1,
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
@@ -220,7 +230,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] = {
   { 101, 109, sizeof(DeviceOption)},
   { 112, 119, sizeof(Parameters)},
   { 121, 126, sizeof(ModelDef)},
-  { 126, 131, sizeof(OperatorDef)},
+  { 126, 136, sizeof(OperatorDef)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -306,6 +316,8 @@ void TableStruct::InitDefaultsImpl() {
       ::kurff::HOGParameters::internal_default_instance());
   _Parameters_default_instance_.get_mutable()->conv_parameters_ = const_cast< ::kurff::ConvParameters*>(
       ::kurff::ConvParameters::internal_default_instance());
+  _OperatorDef_default_instance_.get_mutable()->device_option_ = const_cast< ::kurff::DeviceOption*>(
+      ::kurff::DeviceOption::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -338,12 +350,14 @@ void AddDescriptorsImpl() {
       "\001(\r\"j\n\nParameters\022,\n\016hog_parameters\030\001 \001("
       "\0132\024.kurff.HOGParameters\022.\n\017conv_paramete"
       "rs\030\002 \001(\0132\025.kurff.ConvParameters\"\n\n\010Model"
-      "Def\"\r\n\013OperatorDef*A\n\nDeviceType\022\007\n\003CPU\020"
-      "\000\022\010\n\004CUDA\020\001\022\n\n\006MKLDNN\020\002\022\024\n\rONLY_FOR_TEST"
-      "\020\305\336\373\t"
+      "Def\"v\n\013OperatorDef\022\014\n\004name\030\001 \001(\t\022\r\n\005inpu"
+      "t\030\002 \003(\t\022\016\n\006output\030\003 \003(\t\022*\n\rdevice_option"
+      "\030\004 \001(\0132\023.kurff.DeviceOption\022\016\n\006engine\030\005 "
+      "\001(\t*A\n\nDeviceType\022\007\n\003CPU\020\000\022\010\n\004CUDA\020\001\022\n\n\006"
+      "MKLDNN\020\002\022\024\n\rONLY_FOR_TEST\020\305\336\373\t"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1005);
+      descriptor, 1110);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "kurff.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
@@ -5138,6 +5152,11 @@ void ModelDef::InternalSwap(ModelDef* other) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int OperatorDef::kNameFieldNumber;
+const int OperatorDef::kInputFieldNumber;
+const int OperatorDef::kOutputFieldNumber;
+const int OperatorDef::kDeviceOptionFieldNumber;
+const int OperatorDef::kEngineFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 OperatorDef::OperatorDef()
@@ -5152,13 +5171,31 @@ OperatorDef::OperatorDef(const OperatorDef& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
-      _cached_size_(0) {
+      _cached_size_(0),
+      input_(from.input_),
+      output_(from.output_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_name()) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  engine_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_engine()) {
+    engine_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.engine_);
+  }
+  if (from.has_device_option()) {
+    device_option_ = new ::kurff::DeviceOption(*from.device_option_);
+  } else {
+    device_option_ = NULL;
+  }
   // @@protoc_insertion_point(copy_constructor:kurff.OperatorDef)
 }
 
 void OperatorDef::SharedCtor() {
   _cached_size_ = 0;
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  engine_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  device_option_ = NULL;
 }
 
 OperatorDef::~OperatorDef() {
@@ -5167,6 +5204,11 @@ OperatorDef::~OperatorDef() {
 }
 
 void OperatorDef::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  engine_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) {
+    delete device_option_;
+  }
 }
 
 void OperatorDef::SetCachedSize(int size) const {
@@ -5194,6 +5236,22 @@ OperatorDef* OperatorDef::New(::google::protobuf::Arena* arena) const {
 
 void OperatorDef::Clear() {
 // @@protoc_insertion_point(message_clear_start:kurff.OperatorDef)
+  input_.Clear();
+  output_.Clear();
+  if (_has_bits_[0 / 32] & 7u) {
+    if (has_name()) {
+      GOOGLE_DCHECK(!name_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
+      (*name_.UnsafeRawStringPointer())->clear();
+    }
+    if (has_engine()) {
+      GOOGLE_DCHECK(!engine_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
+      (*engine_.UnsafeRawStringPointer())->clear();
+    }
+    if (has_device_option()) {
+      GOOGLE_DCHECK(device_option_ != NULL);
+      device_option_->::kurff::DeviceOption::Clear();
+    }
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -5207,14 +5265,97 @@ bool OperatorDef::MergePartialFromCodedStream(
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional string name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->name().data(), this->name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "kurff.OperatorDef.name");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string input = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_input()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->input(this->input_size() - 1).data(),
+            this->input(this->input_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "kurff.OperatorDef.input");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated string output = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->add_output()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->output(this->output_size() - 1).data(),
+            this->output(this->output_size() - 1).length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "kurff.OperatorDef.output");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional .kurff.DeviceOption device_option = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_device_option()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional string engine = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_engine()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->engine().data(), this->engine().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "kurff.OperatorDef.engine");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
   }
 success:
   // @@protoc_insertion_point(parse_success:kurff.OperatorDef)
@@ -5231,6 +5372,53 @@ void OperatorDef::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = _has_bits_[0];
+  // optional string name = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // repeated string input = 2;
+  for (int i = 0, n = this->input_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->input(i).data(), this->input(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.input");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->input(i), output);
+  }
+
+  // repeated string output = 3;
+  for (int i = 0, n = this->output_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->output(i).data(), this->output(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.output");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->output(i), output);
+  }
+
+  // optional .kurff.DeviceOption device_option = 4;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->device_option_, output);
+  }
+
+  // optional string engine = 5;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->engine().data(), this->engine().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.engine");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->engine(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -5243,6 +5431,56 @@ void OperatorDef::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_to_array_start:kurff.OperatorDef)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional string name = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->name().data(), this->name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // repeated string input = 2;
+  for (int i = 0, n = this->input_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->input(i).data(), this->input(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.input");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(2, this->input(i), target);
+  }
+
+  // repeated string output = 3;
+  for (int i = 0, n = this->output_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->output(i).data(), this->output(i).length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.output");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->output(i), target);
+  }
+
+  // optional .kurff.DeviceOption device_option = 4;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *this->device_option_, deterministic, target);
+  }
+
+  // optional string engine = 5;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->engine().data(), this->engine().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "kurff.OperatorDef.engine");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->engine(), target);
+  }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
@@ -5260,6 +5498,45 @@ size_t OperatorDef::ByteSizeLong() const {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
+  }
+  // repeated string input = 2;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->input_size());
+  for (int i = 0, n = this->input_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->input(i));
+  }
+
+  // repeated string output = 3;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->output_size());
+  for (int i = 0, n = this->output_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->output(i));
+  }
+
+  if (_has_bits_[0 / 32] & 7u) {
+    // optional string name = 1;
+    if (has_name()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->name());
+    }
+
+    // optional string engine = 5;
+    if (has_engine()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->engine());
+    }
+
+    // optional .kurff.DeviceOption device_option = 4;
+    if (has_device_option()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->device_option_);
+    }
+
   }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
@@ -5290,6 +5567,22 @@ void OperatorDef::MergeFrom(const OperatorDef& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  input_.MergeFrom(from.input_);
+  output_.MergeFrom(from.output_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 7u) {
+    if (cached_has_bits & 0x00000001u) {
+      set_has_name();
+      name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+    }
+    if (cached_has_bits & 0x00000002u) {
+      set_has_engine();
+      engine_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.engine_);
+    }
+    if (cached_has_bits & 0x00000004u) {
+      mutable_device_option()->::kurff::DeviceOption::MergeFrom(from.device_option());
+    }
+  }
 }
 
 void OperatorDef::CopyFrom(const ::google::protobuf::Message& from) {
@@ -5315,6 +5608,11 @@ void OperatorDef::Swap(OperatorDef* other) {
   InternalSwap(other);
 }
 void OperatorDef::InternalSwap(OperatorDef* other) {
+  input_.InternalSwap(&other->input_);
+  output_.InternalSwap(&other->output_);
+  name_.Swap(&other->name_);
+  engine_.Swap(&other->engine_);
+  std::swap(device_option_, other->device_option_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -5327,6 +5625,315 @@ void OperatorDef::InternalSwap(OperatorDef* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // OperatorDef
+
+// optional string name = 1;
+bool OperatorDef::has_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void OperatorDef::set_has_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void OperatorDef::clear_has_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void OperatorDef::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_name();
+}
+const ::std::string& OperatorDef::name() const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.name)
+  return name_.GetNoArena();
+}
+void OperatorDef::set_name(const ::std::string& value) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.name)
+}
+#if LANG_CXX11
+void OperatorDef::set_name(::std::string&& value) {
+  set_has_name();
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kurff.OperatorDef.name)
+}
+#endif
+void OperatorDef::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.name)
+}
+void OperatorDef::set_name(const char* value, size_t size) {
+  set_has_name();
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.name)
+}
+::std::string* OperatorDef::mutable_name() {
+  set_has_name();
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* OperatorDef::release_name() {
+  // @@protoc_insertion_point(field_release:kurff.OperatorDef.name)
+  clear_has_name();
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void OperatorDef::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    set_has_name();
+  } else {
+    clear_has_name();
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:kurff.OperatorDef.name)
+}
+
+// repeated string input = 2;
+int OperatorDef::input_size() const {
+  return input_.size();
+}
+void OperatorDef::clear_input() {
+  input_.Clear();
+}
+const ::std::string& OperatorDef::input(int index) const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.input)
+  return input_.Get(index);
+}
+::std::string* OperatorDef::mutable_input(int index) {
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.input)
+  return input_.Mutable(index);
+}
+void OperatorDef::set_input(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.input)
+  input_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+void OperatorDef::set_input(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.input)
+  input_.Mutable(index)->assign(std::move(value));
+}
+#endif
+void OperatorDef::set_input(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  input_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.input)
+}
+void OperatorDef::set_input(int index, const char* value, size_t size) {
+  input_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.input)
+}
+::std::string* OperatorDef::add_input() {
+  // @@protoc_insertion_point(field_add_mutable:kurff.OperatorDef.input)
+  return input_.Add();
+}
+void OperatorDef::add_input(const ::std::string& value) {
+  input_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.input)
+}
+#if LANG_CXX11
+void OperatorDef::add_input(::std::string&& value) {
+  input_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.input)
+}
+#endif
+void OperatorDef::add_input(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  input_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kurff.OperatorDef.input)
+}
+void OperatorDef::add_input(const char* value, size_t size) {
+  input_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kurff.OperatorDef.input)
+}
+const ::google::protobuf::RepeatedPtrField< ::std::string>&
+OperatorDef::input() const {
+  // @@protoc_insertion_point(field_list:kurff.OperatorDef.input)
+  return input_;
+}
+::google::protobuf::RepeatedPtrField< ::std::string>*
+OperatorDef::mutable_input() {
+  // @@protoc_insertion_point(field_mutable_list:kurff.OperatorDef.input)
+  return &input_;
+}
+
+// repeated string output = 3;
+int OperatorDef::output_size() const {
+  return output_.size();
+}
+void OperatorDef::clear_output() {
+  output_.Clear();
+}
+const ::std::string& OperatorDef::output(int index) const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.output)
+  return output_.Get(index);
+}
+::std::string* OperatorDef::mutable_output(int index) {
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.output)
+  return output_.Mutable(index);
+}
+void OperatorDef::set_output(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.output)
+  output_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+void OperatorDef::set_output(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.output)
+  output_.Mutable(index)->assign(std::move(value));
+}
+#endif
+void OperatorDef::set_output(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  output_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.output)
+}
+void OperatorDef::set_output(int index, const char* value, size_t size) {
+  output_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.output)
+}
+::std::string* OperatorDef::add_output() {
+  // @@protoc_insertion_point(field_add_mutable:kurff.OperatorDef.output)
+  return output_.Add();
+}
+void OperatorDef::add_output(const ::std::string& value) {
+  output_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.output)
+}
+#if LANG_CXX11
+void OperatorDef::add_output(::std::string&& value) {
+  output_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:kurff.OperatorDef.output)
+}
+#endif
+void OperatorDef::add_output(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  output_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:kurff.OperatorDef.output)
+}
+void OperatorDef::add_output(const char* value, size_t size) {
+  output_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:kurff.OperatorDef.output)
+}
+const ::google::protobuf::RepeatedPtrField< ::std::string>&
+OperatorDef::output() const {
+  // @@protoc_insertion_point(field_list:kurff.OperatorDef.output)
+  return output_;
+}
+::google::protobuf::RepeatedPtrField< ::std::string>*
+OperatorDef::mutable_output() {
+  // @@protoc_insertion_point(field_mutable_list:kurff.OperatorDef.output)
+  return &output_;
+}
+
+// optional .kurff.DeviceOption device_option = 4;
+bool OperatorDef::has_device_option() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void OperatorDef::set_has_device_option() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void OperatorDef::clear_has_device_option() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void OperatorDef::clear_device_option() {
+  if (device_option_ != NULL) device_option_->::kurff::DeviceOption::Clear();
+  clear_has_device_option();
+}
+const ::kurff::DeviceOption& OperatorDef::device_option() const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.device_option)
+  return device_option_ != NULL ? *device_option_
+                         : *::kurff::DeviceOption::internal_default_instance();
+}
+::kurff::DeviceOption* OperatorDef::mutable_device_option() {
+  set_has_device_option();
+  if (device_option_ == NULL) {
+    device_option_ = new ::kurff::DeviceOption;
+  }
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.device_option)
+  return device_option_;
+}
+::kurff::DeviceOption* OperatorDef::release_device_option() {
+  // @@protoc_insertion_point(field_release:kurff.OperatorDef.device_option)
+  clear_has_device_option();
+  ::kurff::DeviceOption* temp = device_option_;
+  device_option_ = NULL;
+  return temp;
+}
+void OperatorDef::set_allocated_device_option(::kurff::DeviceOption* device_option) {
+  delete device_option_;
+  device_option_ = device_option;
+  if (device_option) {
+    set_has_device_option();
+  } else {
+    clear_has_device_option();
+  }
+  // @@protoc_insertion_point(field_set_allocated:kurff.OperatorDef.device_option)
+}
+
+// optional string engine = 5;
+bool OperatorDef::has_engine() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void OperatorDef::set_has_engine() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void OperatorDef::clear_has_engine() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void OperatorDef::clear_engine() {
+  engine_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_engine();
+}
+const ::std::string& OperatorDef::engine() const {
+  // @@protoc_insertion_point(field_get:kurff.OperatorDef.engine)
+  return engine_.GetNoArena();
+}
+void OperatorDef::set_engine(const ::std::string& value) {
+  set_has_engine();
+  engine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:kurff.OperatorDef.engine)
+}
+#if LANG_CXX11
+void OperatorDef::set_engine(::std::string&& value) {
+  set_has_engine();
+  engine_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:kurff.OperatorDef.engine)
+}
+#endif
+void OperatorDef::set_engine(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_engine();
+  engine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:kurff.OperatorDef.engine)
+}
+void OperatorDef::set_engine(const char* value, size_t size) {
+  set_has_engine();
+  engine_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:kurff.OperatorDef.engine)
+}
+::std::string* OperatorDef::mutable_engine() {
+  set_has_engine();
+  // @@protoc_insertion_point(field_mutable:kurff.OperatorDef.engine)
+  return engine_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+::std::string* OperatorDef::release_engine() {
+  // @@protoc_insertion_point(field_release:kurff.OperatorDef.engine)
+  clear_has_engine();
+  return engine_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+void OperatorDef::set_allocated_engine(::std::string* engine) {
+  if (engine != NULL) {
+    set_has_engine();
+  } else {
+    clear_has_engine();
+  }
+  engine_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), engine);
+  // @@protoc_insertion_point(field_set_allocated:kurff.OperatorDef.engine)
+}
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
